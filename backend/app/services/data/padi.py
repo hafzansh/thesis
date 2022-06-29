@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session
 
 from app.services.base import ServicesBase
 from app.models.padi import Padi
+from app.models.iklim import Iklim
 from app.schemas.padi_schema import PadiCreate,PadiUpdate
 
 
@@ -19,6 +20,29 @@ class CrudPadi(ServicesBase[Padi,PadiCreate,PadiUpdate]):
             .offset(offset)
             .limit(limit)
             .all()
+        )
+        
+    def get_all_padi_iklim(
+        self, db: Session
+    ):
+        return (
+            db.query(self.model)            
+            .join(Iklim, Padi.tahun == Iklim.tahun)
+            .with_entities(
+                self.model.kota,
+                self.model.luas_panen,
+                self.model.luas_lahan,
+                self.model.produktivitas,
+                Iklim.stasiun,
+                Iklim.suhu_min,
+                Iklim.suhu_max,
+                Iklim.suhu_avg,
+                Iklim.humidity_avg,
+                Iklim.curah_hujan,
+                Iklim.hari_hujan,
+                Iklim.penyinaran,
+                self.model.produksi                
+            ).all()
         )
     def get_data_by_city(
         self, db: Session,city:str, offset: int = 0, limit: int = 100

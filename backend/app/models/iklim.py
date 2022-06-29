@@ -15,4 +15,5 @@ class Iklim(Base):
     suhu_avg = Column(Float)
     humidity_avg = Column(Float)
     curah_hujan = Column(Float)
+    hari_hujan = Column(Float)
     penyinaran = Column(Float)
