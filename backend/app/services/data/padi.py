@@ -30,6 +30,7 @@ class CrudPadi(ServicesBase[Padi,PadiCreate,PadiUpdate]):
             .join(Iklim, Padi.tahun == Iklim.tahun)
             .with_entities(
                 self.model.kota,
+                self.model.tahun,
                 self.model.luas_panen,
                 self.model.luas_lahan,
                 self.model.produktivitas,

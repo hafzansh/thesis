@@ -37,10 +37,10 @@ def train(file:str):
         keras.layers.Dense(units=1)
     ])
     model.compile(loss='mean_squared_error',optimizer=tf.keras.optimizers.Adam(learning_rate=0.01))
-    history=model.fit(x_train,y_train,epochs=500,validation_data=(x_test,y_test))
+    history=model.fit(x_train,y_train,epochs=10,validation_data=(x_test,y_test))
     eva = model.evaluate(x_test,y_test)
     model.save('model.h5')
-    return print(eva)
+    return print(np.mean(datax[0]))
 
 def predict():    
     model = keras.models.load_model('model.h5')
@@ -63,9 +63,9 @@ def test(file):
     y_test = split_scaled[3]
     # model = keras.models.load_model('model.h5')
     # result = model.predict(x_test,y_test)
-    return print(y_test.flatten())
-# train('new_model_training.csv')
-test('new_model_training.csv')
+    return print(x_test.info())
+train('new_model_training.csv')
+# test('new_model_training.csv')
 
 # predict()
 

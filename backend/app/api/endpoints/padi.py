@@ -32,7 +32,8 @@ def list_data_padi_and_iklim(
     # limit: int = 100,
     # current_user: User = Depends(deps.get_current_active_superuser),
 ):
-    """    
+    """   
+ 
     """    
     response = padi.get_all_padi_iklim(db)
     return response
