@@ -64,7 +64,7 @@ class MLModel:
             dump(self.x_scaler, self.path+'/scaler_x.bin', compress=True)
             dump(self.y_scaler, self.path+'/scaler_y.bin', compress=True)
 
-        return result
+        return test_data.to_json(orient='records')
 
 
     def split_scale_data(self,x,y,size):

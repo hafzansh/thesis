@@ -1,16 +1,21 @@
 <script lang="ts">
     import authService from "../../services/auth.service";
     import { navigateTo } from "svelte-router-spa";
-    let token = localStorage.getItem('user')
-    token = JSON.stringify(token);
+    import {user_data} from "../../store/store";
+    let stored;
+    user_data.subscribe((res) => stored = res)    
+
     const logout = async () => {
+        
         authService.logout()
         navigateTo('login')
     }
+    export let params;
+  export let currentRoute;
 </script>
 
-<div>
-    {token}
+<div>    
+    {stored}           
     <button on:click={logout} class="flex
     mt-2
     items-center

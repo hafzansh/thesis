@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const API_URL = 'http://localhost:8000/api/';
 class AuthService {
-  formData: {username,password} = {username:String,password:String} ;
+  formData = {username:String,password:String} ;
   accesstoken: string = '';
   
   login(user: { username: any; password: any; }) {
