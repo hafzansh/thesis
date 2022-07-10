@@ -9,7 +9,9 @@ class Settings(BaseSettings):
     SECRET_KEY: str = secrets.token_urlsafe(32)
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 8
     BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = [
-        "http://localhost:3000"
+        "http://localhost:3000",
+        "http://192.168.100.235:3000",
+        "http://192.168.100.235",
     ]
 
     @validator("BACKEND_CORS_ORIGINS", pre=True)

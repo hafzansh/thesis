@@ -1,1 +1,2 @@
-export const Base_api:string = 'http://localhost:8000/api/';
+export const baseApi = 'http://localhost:8000/api'
+export const JSONContentTypeForm = "application/x-www-form-urlencoded"
