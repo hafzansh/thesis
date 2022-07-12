@@ -4,18 +4,22 @@
 // for information about these interfaces
 // and what to do when importing types
 declare namespace App {
-	// interface Locals {
-	// 	// user: {
-	// 	// 	username:string
-	// 	// }
-	// 	user:{
-	// 		username:string,
-	// 		full_name:string
-	// 	}
-	// }
+	interface Locals {
+		userid: string;
+		user: any;
+		session: string;
+		token:string
+	}
 	// interface Platform {}
 	interface Session {
-		user: string
+		user: {
+			id:number,
+			username:string,
+			full_name:string,
+			is_superuser:boolean,
+			auth_token:string,
+			authenticated:boolean
+		}
 	}
 	// interface Stuff {}
 }
@@ -24,4 +28,7 @@ declare module '@fortawesome/pro-solid-svg-icons/index.es' {
 }
 declare module 'svelte-yup'{
 	export * from 'svelte-yup'
+}
+declare module 'svelte-table'{
+    export {SvelteTable} from 'svelte-table'
 }

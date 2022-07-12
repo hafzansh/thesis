@@ -3,7 +3,7 @@
 
 </script>
 
-<div class="alert alert-error shadow-lg">
+<div class="alert alert-error shadow-lg rounded-2xl">
   <div>
     <svg
       xmlns="http://www.w3.org/2000/svg"

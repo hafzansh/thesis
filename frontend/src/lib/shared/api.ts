@@ -13,3 +13,13 @@ type Send = Promise<{
     return await response.json()
   }
   
+  export async function get(url:string,token:string) {    
+    const response = await fetch(url,{
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        authorization: `Bearer ${token}`
+      }
+    })
+    return response
+  }

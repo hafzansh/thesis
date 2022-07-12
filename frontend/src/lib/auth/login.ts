@@ -16,3 +16,15 @@ export const getAccessToken = async (user: {username:string,password:string}) =>
         console.log(error)
     }       
 }
+
+export const getUserData = async(token:string) => {
+    const fullurl = `${baseApi}/login/test-token`
+    let response = await fetch(fullurl, {
+        method: "POST",
+        headers: {
+          accept: "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      return response
+}

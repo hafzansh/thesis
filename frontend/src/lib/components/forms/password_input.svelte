@@ -9,6 +9,7 @@
     export let value = "";
     export let error = false;
     export let focused = false;
+    export let required:boolean;
   </script>
   
   <div class="flex flex-col mb-5">
@@ -53,6 +54,7 @@
               "
         class:invalidInput={error}
         {placeholder}
+        {required}
       />
     </div>
   </div>
