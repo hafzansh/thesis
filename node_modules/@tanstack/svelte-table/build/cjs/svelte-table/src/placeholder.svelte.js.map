@@ -1,0 +1,1 @@
+{"version":3,"file":"placeholder.svelte.js","sources":["../../../../src/placeholder.svelte"],"sourcesContent":["<script>\nexport let content;\n</script>\n\n{content}"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;iCAIC,GAAO,CAAA,CAAA,CAAA,CAAA,CAAA;;;;;;+DAAP,GAAO,CAAA,CAAA,CAAA,CAAA,CAAA;;;;;;;;;;;OAHG,OAAO,EAAA,GAAA,OAAA,CAAA;;;;;;;;;;;;;;;;;;"}

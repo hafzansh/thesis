@@ -1,5 +1,6 @@
 <script lang="ts">
   import Fa from "svelte-fa"
+  
   import {faBarsStaggered} from "@fortawesome/free-solid-svg-icons"
   import {session} from '$app/stores'
 import { app_title } from "../../utils/constants";
@@ -26,7 +27,7 @@ import { app_title } from "../../utils/constants";
             <span class="badge">New</span>
           </a>
         </li>
-        <li><a href="/">Settings</a></li>
+        <li><a  href="/">Settings</a></li>
         <li><a href="/logout">Logout</a></li>
       </ul>
     </div>
