@@ -2,7 +2,7 @@
   import { send } from "../../lib/shared/api";
   import { fade, fly } from "svelte/transition";
   import { faAt, faLock,faArrowRightToBracket as faLogin } from "@fortawesome/free-solid-svg-icons";
-  import Alert from "@comp/notification/alert.svelte";
+  import Alert from "../../lib/components/others/alert.svelte";
   import { FormButton, PasswordInput, TextInput } from "@comp/forms";
   import {onMount} from 'svelte'
   import type { Load } from "@sveltejs/kit";

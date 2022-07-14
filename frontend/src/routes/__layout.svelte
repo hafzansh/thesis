@@ -9,8 +9,8 @@ let ready:boolean=false
   onMount(()=> ready = true)
 </script>
 {#if ready}
-<div class="bg-slate-200" in:fade out:fade={{duration:500}}>
-  <Navbar/>
+<div class="base-100" in:fade out:fade={{duration:500}}>
+  <!-- <Navbar/> -->
   <Sidebar><slot/></Sidebar>
 </div>
 {/if}

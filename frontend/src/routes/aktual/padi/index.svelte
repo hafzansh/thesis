@@ -2,11 +2,11 @@
     import { session } from "$app/stores";
     import Grid from "gridjs-svelte";
     import { onMount } from "svelte";
-    import { city } from "../../lib/utils/constants";
-    import type { Padi, TProps } from "../../lib/utils/schema";
-    import { fetchThisData } from "../test/makeData";
-    import { h, PluginPosition } from "gridjs";	
-  
+    import { city } from "@lib/utils/constants";
+    import type { Padi, TProps } from "@lib/utils/schema";
+    import { fetchThisData } from "../../test/makeData";
+    import { h, } from "gridjs";	
+    import {fly,fade} from 'svelte/transition'
     const tableProps: TProps = {
       fixedHeader: true,
       columns: [
@@ -47,7 +47,7 @@
       data = post;
     });
   </script>
-  <div class="p-10">
+  <div class="p-10" in:fly={{y: 500,duration:1000}} out:fade>
   <Grid
     pagination={{ enabled: true, limit: 10, summary: true, buttonsCount:5 }}
     {...tableProps}

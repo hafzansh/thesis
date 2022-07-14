@@ -2,22 +2,26 @@
   import { session } from "$app/stores";
   import Grid from "gridjs-svelte";
   import { onMount } from "svelte";
-  import { baseApi } from "../../lib/utils/constants";
-  import { get } from "../../lib/shared/api";
+  import { baseApi } from "@lib/utils/constants";
+  import { get } from "@lib/shared/api";
+  import { fly, fade } from "svelte/transition";
+
   let data: [] = [];
- 
-async function reload() {
+
+  async function reload() {
     const res = await get(`${baseApi}/iklim`, $session.user.auth_token).then(
       (res) => res.json()
     );
-    if(res) { data = res}
-}
+    if (res) {
+      data = res;
+    }
+  }
   onMount(async () => {
-    reload()
+    reload();
   });
 </script>
 
-<div class="p-10 top-0">
+<div class="p-10 top-0" in:fly={{y:500,duration:1000}} out:fade>
   <Grid
     pagination={{ enabled: true, limit: 10, summary: true, buttonsCount: 5 }}
     fixedHeader={true}
@@ -29,4 +33,3 @@ async function reload() {
     {data}
   />
 </div>
-

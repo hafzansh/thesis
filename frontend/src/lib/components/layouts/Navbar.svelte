@@ -1,15 +1,16 @@
 <script lang="ts">
   import Fa from "svelte-fa"
-  
+  import {page} from '$app/stores'
   import {faBarsStaggered} from "@fortawesome/free-solid-svg-icons"
   import {session} from '$app/stores'
 import { app_title } from "../../utils/constants";
+import Breadcrumb from "../others/breadcrumb.svelte";
 </script>
 
-<div class="navbar bg-base-200">
+<div class="navbar bg-base-200 rounded-2xl m-5 shadow">
   <div class="flex-1">
-    <p class="btn btn-ghost normal-case text-xl">{app_title}</p>
-    <label for="my-drawer-2" class="btn btn-ghost drawer-button lg:hidden"><Fa icon={faBarsStaggered}/></label>
+    <label for="my-drawer-2" class="btn btn-ghost drawer-button lg:hidden"><Fa icon={faBarsStaggered} class="text-[25px]"/></label>
+    <Breadcrumb path={$page.url.pathname} />
   </div>
   <div class="flex-none">
     <p class="btn btn-ghost normal-case text-xl">{$session.user.full_name}</p>
