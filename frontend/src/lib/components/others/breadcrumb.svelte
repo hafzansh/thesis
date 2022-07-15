@@ -1,7 +1,8 @@
 <script lang="ts">
   export let path: any;
   import Fa from "svelte-fa";
-  import { faAnglesRight } from "@fortawesome/free-solid-svg-icons";
+  import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+  import {fly} from 'svelte/transition'
   let crumbs: any;
   $: {
     // Remove zero-length tokens.
@@ -23,13 +24,15 @@
   }
 </script>
 
-<div class="flex gap-2 text-2xl  items-center font-medium breadcrumbs ml-4">
+<div class="flex gap-2 text-2xl items-center font-medium font-inter breadcrumbs ml-4 mt-0" in:fly={{y:5}}>
   {#each crumbs as c, i}
     {#if i == crumbs.length - 1}
-      {c.label}
+    <span class="text-primary" in:fly={{y:5}}>
+        {c.label}
+    </span>  
     {:else}
-      <a href={c.href}>{c.label}</a>
-      <Fa icon={faAnglesRight} />
+      <a href={c.href} class="text-gray-600" >{c.label}</a>
+      <Fa icon={faChevronRight} class="mt-1 text-sm text-gray-600" />
     {/if}
   {/each}
 </div>

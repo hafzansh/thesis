@@ -1,9 +1,9 @@
 <script lang="ts">
   import Navbar from "./Navbar.svelte";
   import Fa from "svelte-fa";
-  import { faBarsStaggered } from "@fortawesome/free-solid-svg-icons";
   import { page } from "$app/stores";
   import { PageNav } from "../../utils/constants";
+  import { session } from "$app/stores";
 </script>
 
 <div class="drawer drawer-mobile">
@@ -12,30 +12,38 @@
     <div class="mr-10">
       <Navbar />
     </div>
-    <slot />
+    <div class="pl-5 pr-5">
+      <slot />
+    </div>
   </div>
   <div class="drawer-side">
     <label for="my-drawer-2" class="drawer-overlay" />
     <ul
       class="menu p-4 w-80 bg-base-200 text-base-content border-r-2 border-base-300"
     >
-    <div class="flex w-full items-center justify-center mb-5 h-20">
-      <img src="/images/logo.png" class="h-14 w-14" alt="logo" />
-
-      <span class="text-[60px] font-bold align-middle ml-3 mb-2"
-        >JST<span class="text-primary font-semibold">PADI</span></span
-      >
-    </div>
+    <a href="/">
+      <div class="flex w-full items-center justify-center mb-5 h-20">
+        <img src="/images/logo.png" class="h-14 w-14" alt="logo" />
+  
+        <span class="text-[60px] font-bold align-middle ml-3 mb-2"
+          >JST<span class="text-primary font-semibold">PADI</span></span
+        >
+      </div>
+    </a>
       {#each PageNav as nav}
         <li>
           {#if !nav.sublink}
             <a href={nav.path} class:active={$page.url.pathname === nav.path}>
               <Fa icon={nav.icon} class="h-8 w-8" />
-              {nav.title}</a
+              <div class="font-inter">
+                {nav.title}
+
+              </div>
+              </a
             >
           {/if}
           {#if nav.sublink}
-            <span class="text-sm font-bold items-start mt-2 pb-0"
+            <span class="text-sm font-inter font-bold items-start mt-2 pb-0 pt-0"
               >{nav.title}</span
             >
             {#each nav.sublink as sub}
@@ -45,13 +53,15 @@
                 class=""
               >
                 <Fa icon={sub.icon} class="h-8 w-8" />
-                {sub.title}
+                <div class="font-inter">
+                  {sub.title}
+                </div>
               </a>
             {/each}
           {/if}
         </li>
       {/each}
-      <div class="bottom-0 fixed inset-x-0 bg-base-300 ">
+      <div class="bottom-0 fixed inset-x-0 bg-base-300">
         
       </div>
     </ul>

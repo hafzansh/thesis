@@ -30,7 +30,7 @@
                 text-gray-400
               "
       >
-        <Fa icon={icon} class="h-4 w-4 text-blue-500" />
+        <Fa icon={icon} class="h-4 w-4 text-primary" />
       </div>
   
       <!-- svelte-ignore a11y-autofocus -->
@@ -50,7 +50,7 @@
                 border border-gray-400
                 w-full
                 py-2
-                focus:outline-none focus:border-blue-400
+                focus:outline-none focus:border-primary-focus
               "
         class:invalidInput={error}
         {placeholder}
