@@ -115,13 +115,13 @@
   };
 </script>
 
-<div in:fly={{ y: 500, duration: 1000 }} out:fade>
+<div in:fly={{ y: 500, duration: 1500 }} out:fade>
   <DeleteModal bind:open={opena} bind:data {selected} {edit_response} />
   <EditModal bind:values={open} bind:data {selected} {edit_response} />
   <div class="relative capitalize">
-    <div class="absolute top-0 right-0 z-10">
+    <div class="absolute top-0 right-0 z-10 ">
       <button
-        class="btn bg-base-200 text-neutral "
+        class="btn bg-base-200 text-neutral"
         on:click={() =>
           addToast({
             message: "asasasas",

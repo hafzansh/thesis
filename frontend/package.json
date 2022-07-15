@@ -35,6 +35,7 @@
 	"dependencies": {
 		"@fortawesome/free-solid-svg-icons": "^6.1.1",
 		"daisyui": "^2.18.1",
+		"svelte-chartjs": "^1.1.4",
 		"svelte-fa": "^3.0.2",
 		"yup": "^0.32.11"
 	}

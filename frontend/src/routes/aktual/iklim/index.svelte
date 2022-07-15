@@ -22,7 +22,7 @@
   });
 </script>
 
-<div class="p-10 top-0" in:fly={{ y: 500, duration: 1500 }} out:fade>
+<div class="p-10 top-0" in:fade={{ duration: 500 }} out:fade>
   <Grid
     pagination={{ enabled: true, limit: 10, summary: true, buttonsCount: 5 }}
     fixedHeader={true}
