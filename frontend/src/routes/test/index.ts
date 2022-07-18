@@ -1,18 +1,14 @@
 import type { RequestHandler } from "@sveltejs/kit"
 import { get_data, post_data } from "../../lib/shared/api"
 import { baseApi, } from "../../lib/utils/constants"
-import type { Iklim } from "../../lib/utils/schema"
+import type { Iklim, model } from "../../lib/utils/schema"
 
 export const get:RequestHandler = async (event) => {
-    const data:Iklim[] = await get_data(`${baseApi}/iklim/`, event.locals.token).then(result => result.json())
-    let data_status=false
-    if (data.some(e => ((e.stasiun === "1")&&(e.tahun === "2011")))) {
-        data_status = true
-    }
+    const data:model[] = await get_data(`${baseApi}/model/`, event.locals.token).then(result => result.json())
+    
     return {
         status:200,
-        body: {
-            data_status,
+        body: {            
             data: data
         }
     }

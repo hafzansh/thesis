@@ -1,6 +1,6 @@
 import { baseApi, JSONContentTypeForm } from "../utils/constants"
 
-export const getAccessToken = async (user: {username:string,password:string}) => { 
+export const getAccessToken = async (user: {username:any,password:any}) => { 
     try {
         const fullurl = `${baseApi}/login/access-token`
         const r = await fetch(fullurl,{

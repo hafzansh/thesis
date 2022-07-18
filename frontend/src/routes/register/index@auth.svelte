@@ -7,6 +7,7 @@
     faLock,
     faArrowRightToBracket as faLogin,
     faReceipt,
+faUser,
   } from "@fortawesome/free-solid-svg-icons";
   import Alert from "../../lib/components/others/alert.svelte";
   import { FormButton, PasswordInput, TextInput } from "@comp/forms";
@@ -27,7 +28,7 @@
 
 <script lang="ts">
   const register = () => {
-    goto("/register");
+    goto("/login");
   };
   let error: string;
   let ready: boolean = false;
@@ -49,6 +50,7 @@
     <div
       in:fly={{ y: 500, duration: 1000 }}
       out:fade
+      
       class="flex flex-col
     bg-white
     shadow-md
@@ -62,10 +64,10 @@
     max-w-lg"
     >
       <div class="font-medium self-center text-xl sm:text-3xl text-gray-800">
-        Welcome Back
+        Register Account
       </div>
       <div class="mt-4 self-center text-xl sm:text-sm text-gray-800">
-        Enter your credentials to access your account
+        Enter credentials to create your account
       </div>
       <div class="mt-5">
         <form on:submit|preventDefault={login} method="post">
@@ -85,6 +87,20 @@
 
             <div>
               <div class="label">
+                <label class="label-text" for="full_name">Full Name</label>
+              </div>
+              <TextInput
+                icon={faUser}
+                error={false}
+                focused={true}
+                id="full_name"
+                inputName="full_name"
+                placeholder="full_name"
+                required={true}
+              />
+  
+              <div>
+              <div class="label">
                 <label class="label-text" for="password">Password</label>
               </div>
               <PasswordInput
@@ -101,7 +117,7 @@
             {#if error}
               <Alert message={error} />
             {/if}
-            <FormButton type="submit" icon={faLogin} title="Sign In" />
+            <FormButton type="submit" icon={faReceipt} title="Register" />
             <div class="flex w-full">
               <button
                 on:click={register}
@@ -123,9 +139,9 @@
                 ease-in
               "
               >
-                <span class="mr-2 uppercase">Register</span>
+                <span class="mr-2 uppercase">Sign in</span>
                 <span>
-                  <Fa icon={faReceipt} class="h-6 w-6" />
+                  <Fa icon={faLogin} class="h-6 w-6" />
                 </span>
               </button>
             </div>

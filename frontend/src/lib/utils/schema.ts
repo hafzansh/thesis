@@ -36,6 +36,15 @@ export type Iklim = {
   penyinaran: number,
   id: number,
 }
+export type model = {
+  id:number,
+  path:string,
+  node:number,
+  epoch:number,
+  mae:number,
+  loss:Array<{loss:number,val_loss:number}>,
+  result:Array<{city:number,year:number,"Test Data":number}>
+}
 export interface iPadi {
   kota: string,
   tahun: string,

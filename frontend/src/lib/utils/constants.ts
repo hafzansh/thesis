@@ -6,7 +6,6 @@ export const baseApi = 'http://localhost:8000/api'
 export const JSONContentTypeForm = "application/x-www-form-urlencoded"
 export const app_title = "JST Padi"
 export const city: Array<string> = [
-    '',
     'Tanah Laut',
     'Kotabaru',
     'Banjar',

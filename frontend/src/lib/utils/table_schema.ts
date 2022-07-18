@@ -57,3 +57,14 @@ export const iklim_dummy = {
     penyinaran:0,
     id:0,
 }
+
+
+export const padi_dummy = {
+    kota: "string",
+    tahun: "string",
+    luas_panen: 0,
+    luas_lahan: 0,
+    produktivitas: 0,
+    produksi: 0,
+    id: 0,
+ }

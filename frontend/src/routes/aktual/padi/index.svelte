@@ -1,168 +1,138 @@
 <script lang="ts">
-  import { session } from "$app/stores";
   import Grid from "gridjs-svelte";
-  import EditModal from "../../../lib/components/modals/edit_modal.padi.svelte";
-
-  import { addToast } from "../../../lib/utils/store";
-  import { onMount } from "svelte";
-  import { baseApi, city } from "@lib/utils/constants";
-  import type { Padi, TProps } from "@lib/utils/schema";
-  import { fetchThisData } from "../../test/makeData";
-  import { h } from "gridjs";
   import { fly, fade } from "svelte/transition";
-  import { get } from "../../../lib/shared/api";
-  import DeleteModal from "../../../lib/components/modals/delete_modal.padi.svelte";
-  import Fa from "svelte-fa";
+  import type { Padi } from "../../../lib/utils/schema";
   import { faChartLine, faSquarePlus } from "@fortawesome/free-solid-svg-icons";
-  let selected: any;
-  let open = false;
-  let opena = false;
-  let edit_response: Padi = {
-    kota: "string",
-    tahun: "string",
-    luas_panen: 0,
-    luas_lahan: 0,
-    produktivitas: 0,
-    produksi: 0,
-    id: 0,
-  };
-  const tableProps: TProps = {
-    fixedHeader: true,
-    columns: [
-      {
-        name: "id",
-        hidden: true,
-      },
-      "Tahun",
-      "Kota",
-      { id: "luas_lahan", name: "Luas Lahan" },
-      { id: "luas_panen", name: "Luas Panen" },
-      "Produktivitas",
-      { id: "produksi", name: "Hasil Produksi" },
-      {
-        name: "Action",
-        width: "200px",
-        formatter: (cell: any, row: any) => {
-          return h(
-            "div",
+  import AddModal from "@lib/components/modals/padi/add_modal.svelte";
+  import EditModal from "@lib/components/modals/padi/edit_modal.svelte";
+  import DeleteModal from "@lib/components/modals/padi/delete_modal.svelte";
+  import Fa from "svelte-fa";
+  import { h } from "gridjs";
+  import { get_data } from "../../../lib/shared/api";
+import { baseApi } from "../../../lib/utils/constants";
+import { session } from "$app/stores";
+import { padi_dummy } from "../../../lib/utils/table_schema";
+  export let data: Padi[] = [];
+  let edit_response:Padi = padi_dummy
+  const columns = [
+    {
+      name: "ID",
+      id: "id",
+      hidden: true,
+    },
+    {
+      name: "Tahun",
+      id: "tahun",
+    },
+    {
+      name: "Kota",
+      id: "kota",
+      width: "200px"
+    },
+    {
+      name: "Luas Lahan",
+      id: "luas_lahan",
+    },
+    {
+      name: "Luas Panen",
+      id: "luas_panen",
+    },
+    {
+      name: "Produktivitas (%)",
+      id: "produktivitas",
+    },
+    {
+      name: "Produksi",
+      id: "produksi",
+    },
+    {
+      name: "Action",
+      width: "200px",
+      formatter: (cell: any, row: any) => {
+        return h(
+          "div",
+          {
+            className:
+              "p-0 flex btn-group justify-center font-inter",
+          },
+          h(
+            "button",
             {
-              className: "p-0 flex justify-center btn-group font-inter",
+              className: "btn btn-primary btn-sm w-[75px]",
+              onClick: () => {
+                edit_data(row.cells[0].data);
+              },
             },
-            h(
-              "button",
-              {
-                className: "btn btn-primary btn-sm w-[80px]",
-                onClick: () => {
-                  update_edit(row.cells[0].data);
-                },
+            "Edit"
+          ),
+          null,
+          h("div", {
+            className: "divider h-1 p-0 m-0",
+          }),
+          null,
+          h(
+            "button",
+            {
+              className: "btn btn-primary btn-sm",
+              onClick: () => {
+                delete_data(row.cells[0].data);
+
               },
-              "Edit"
-            ),
-            null,
-            h(
-              "div",
-              {
-                className: "w-[5px] h-[32px] bg-primary-focus",
-              },              
-            ),
-            null,
-            h(
-              "button",
-              {
-                className: "btn btn-primary btn-sm w-100",
-                onClick: () => {
-                  update(row.cells[0].data);
-                },
-              },
-              "Delete"
-            )
-          );
-        },
+            },
+            "Delete"
+          )
+        );
       },
-    ],
-  };
-  const fetchDefault = async () => {
-    const response: Padi[] = await fetchThisData($session.user.auth_token).then(
-      (res) => res.json()
-    );
-    return response;
-  };
-  let data: Padi[] = [];
-  onMount(async () => {
-    const post = await fetchDefault().then();
-    post.map((p) => {
-      p.kota = city[parseInt(p.kota)];
-    });
-    data = post;
-  });
-  const update = async (data: any) => {
-    opena = !opena;
-    selected = data;
-    const response = await get(
+    },
+  ];
+  let add_modal = false;
+  let edit_modal = false;
+  let delete_modal = false;
+  const edit_data = async (data: any) => {
+    edit_modal = !edit_modal;
+    const response = await get_data(
       `${baseApi}/padi/id/${data}`,
       $session.user.auth_token
     ).then((res) => res.json());
     edit_response = response;
   };
-  const update_edit = async (data: any) => {
-    open = !open;
-    selected = data;
-    const response = await get(
+  const delete_data = async (data: any) => {
+    delete_modal = !delete_modal;
+    const response = await get_data(
       `${baseApi}/padi/id/${data}`,
       $session.user.auth_token
     ).then((res) => res.json());
     edit_response = response;
   };
 </script>
-
-<div in:fly={{ y: 500 ,duration:1000 }} out:fade>
-  <DeleteModal bind:open={opena} bind:data {selected} {edit_response} />
-  <EditModal bind:values={open} bind:data {selected} {edit_response} />
+<DeleteModal bind:values={delete_modal} bind:data {edit_response} />
+<EditModal bind:values={edit_modal} {edit_response} />
+<AddModal bind:values={add_modal} />
+<div in:fly={{ y: 500, duration: 500 }} out:fade>
   <div class="relative capitalize">
     <div class="absolute top-0 right-0 z-10 ">
-      <button
-        class="btn bg-base-200 text-neutral"
-        on:click={() =>
-          addToast({
-            message: "asasasas",
-            type: "success",
-            dissmissible: true,
-            timeout: 3000,
-          })}
-      >
+      <button class="btn bg-base-200 text-neutral">
         <Fa icon={faChartLine} class="mr-3" />
         Report
       </button>
       <button
         class="btn bg-base-200 text-neutral"
-        on:click={() =>
-          addToast({
-            message: "asasasas",
-            type: "success",
-            dissmissible: true,
-            timeout: 3000,
-          })}
+        on:click={() => (add_modal = !add_modal)}
       >
         <Fa icon={faSquarePlus} class="mr-3" />
         Add Data
       </button>
     </div>
-    <div class="z-20">
-      <Grid
-        pagination={{
-          enabled: true,
-          limit: 10,
-          summary: true,
-          buttonsCount: 5,
-        }}
-        {...tableProps}
-        search={true}
-        className={{
-          table: "w-full table",
-          search: "",
-        }}
-        {data}
-      />
-    </div>
+    <Grid
+      pagination={{ enabled: true, limit: 10, summary: true, buttonsCount: 5 }}
+      fixedHeader={true}
+      {columns}
+      search={true}
+      className={{
+        table: "w-full h-11/12",
+        search: "",
+      }}
+      {data}
+    />
   </div>
 </div>

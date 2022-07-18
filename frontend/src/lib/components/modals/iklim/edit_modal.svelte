@@ -157,6 +157,7 @@
       </label>
       <p class="py-1 font-inter">This item will be updated!</p>
 
+
       <button class="btn btn-success float-right" type="submit">Confirm</button>
       <label for="modal-edit" class="btn float-right mr-5">Cancel </label>
     </form>
