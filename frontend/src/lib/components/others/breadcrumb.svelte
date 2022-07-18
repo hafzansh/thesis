@@ -31,8 +31,10 @@
         {c.label}
     </span>  
     {:else}
-      <a href={c.href} class="text-gray-600" >{c.label}</a>
-      <Fa icon={faChevronRight} class="mt-1 text-sm text-gray-600" />
+      <a href={c.href} class="text-gray-600" in:fly={{y:5}}>{c.label}</a>
+      <div class="" in:fly={{y:5}}>
+        <Fa icon={faChevronRight} class="mt-1 text-sm text-gray-600" />
+      </div>
     {/if}
   {/each}
 </div>

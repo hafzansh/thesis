@@ -4,6 +4,7 @@
     "gridjs": "^5.0.2",
     "gridjs-buttons": "^1.0.2",
     "gridjs-svelte": "^2.1.1",
-    "svelte-simple-datatables": "^0.2.3"
+    "svelte-simple-datatables": "^0.2.3",
+    "theme-change": "^2.1.0"
   }
 }

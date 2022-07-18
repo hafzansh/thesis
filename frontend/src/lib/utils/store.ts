@@ -1,7 +1,21 @@
 import { writable } from "svelte/store";
-
+import type {Load} from '@sveltejs/kit/'
 export const toasts = writable<any>([]);
+export const load_page: Load = ({ session }) => {
+  if (!session.user.authenticated) {
+    return {
+      status: 302,
+      redirect: '/login',
+    }
+  }
 
+  return {
+    status: 200,
+    props: {
+      user: session.user,
+    },
+  }
+}
 export const addToast = (toast:{message:string,type:string,dissmissible:boolean,timeout:number}) => {
   // Create a unique ID so we can easily find/remove it
   // if it is dismissible/has a timeout.

@@ -4,10 +4,12 @@
   import { faBars,faUserAstronaut } from "@fortawesome/free-solid-svg-icons";
   import { session } from "$app/stores";
   import Breadcrumb from "../others/breadcrumb.svelte";
+  let clicked:boolean=true
 </script>
 
 <div class="navbar bg-base-200 rounded-2xl m-5 shadow">
   <div class="flex-1">
+
     <label for="my-drawer-2" class="btn btn-ghost drawer-button lg:hidden mt-0"
       ><Fa icon={faBars} class="text-[25px]" /></label
     >
@@ -16,8 +18,8 @@
   <div class="flex-none">
     <p class="capitalize font-inter text-xl mr-3">{$session.user.full_name}</p>
     <div class="dropdown dropdown-end">
-      <label for="" tabindex="0" class="btn btn-circle bg-[#68554a] fill-base-content avatar">
-          <Fa icon={faUserAstronaut} class="text-[30px]"/>
+      <label for="" tabindex="0" class="btn btn-outline rounded-full">
+          <Fa icon={faUserAstronaut} class="text-[30px] text-primary"/>
       </label>
       <ul
         tabindex="0"

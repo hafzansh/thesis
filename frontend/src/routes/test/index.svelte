@@ -1,121 +1,63 @@
 <script lang="ts">
-  import { session } from "$app/stores";
-  import { onMount } from "svelte";
-  import type { Padi } from "../../lib/utils/schema";
-  import { fetchThisData } from "./makeData";
+import { goto } from "$app/navigation";
+import { toast } from "@zerodevx/svelte-toast";
 
-  import { writable } from "svelte/store";
-  import {
-    type ColumnDef,
-    createSvelteTable,
-    flexRender,
-    getCoreRowModel,
-    type TableOptions,
-  } from "@tanstack/svelte-table";
-  type PaginationState = {
-    pageIndex: number;
-    pageSize: number;
-  };
+import { send } from "../../lib/shared/api";
 
-  type PaginationTableState = {
-    pagination: PaginationState;
-  };
-
-  type PaginationInitialTableState = {
-    pagination?: Partial<PaginationState>;
-  };
-  const defaultColumns: ColumnDef<Padi>[] = [
-    {
-      accessorKey: "kota",
-      cell: (info) => info.getValue(),
-    },
-    {
-      accessorFn: (row) => row.tahun,
-      id: "tahun",
-      cell: (info) => info.getValue(),
-      header: () => "tahun",
-    },
-    {
-      accessorKey: "luas_panen",
-      header: () => "Age",
-    },
-    {
-      accessorKey: "luas_lahan",
-      header: () => "Visits",
-    },
-    {
-      accessorKey: "produksi",
-      header: "Status",
-    },
-    {
-      accessorKey: "produktivitas",
-      header: "Profile Progress",
-    },
-    {
-      accessorKey: "id",
-      header: "Profile Progress",
-    },
-  ];
-  let data: Padi[] = [];
-  const fetchDefault = async () => {
-    const data: Padi[] = await fetchThisData($session.user.auth_token).then(
-      (res) => res.json()
-    );
-    return data;
-  };
-  onMount(async () => {
-    data = await fetchDefault();
-    rerender();
-  });
-
-  const options = writable<TableOptions<Padi>>({
-    data: data,
-    columns: defaultColumns,
-    getCoreRowModel: getCoreRowModel(),
-  });
-  const rerender = () => {
-    options.update((options) => ({
-      ...options,
-      data: data,
-    }));
-  };
-  const table = createSvelteTable(options);
+import { iklim } from "../../lib/utils/table_schema";
+  let form_data:Array<{name:string,id:string}> = iklim
+  export let data_status:boolean
+  export let data
+  form_data.pop()
+  export let values = false
+  async function submitForm(event: SubmitEvent) {
+    const formEl = event.target as HTMLFormElement;
+    const response = await send(formEl);
+    if (response.error){
+      return toast.push('Error, Status Code:'+response.error)
+    }
+    toast.push('Data has been Added')
+    goto('/aktual/iklim')
+  }
+  console.log(data_status)
+  console.log(data)
 </script>
 
-<div class="p-2">
-  <table class="table table-zebra min-w-full">
-    <thead>
-      {#each $table.getHeaderGroups() as headerGroup}
-        <tr>
-          {#each headerGroup.headers as header}
-            <th>
-              {#if !header.isPlaceholder}
-                <svelte:component
-                  this={flexRender(
-                    header.column.columnDef.header,
-                    header.getContext()
-                  )}
-                />
-              {/if}
-            </th>
-          {/each}
-        </tr>
-      {/each}
-    </thead>
-    <tbody>
-      {#each $table.getRowModel().rows as row}
-        <tr>
-          {#each row.getVisibleCells() as cell}
-            <td>
-              <svelte:component
-                this={flexRender(cell.column.columnDef.cell, cell.getContext())}
-              />
-            </td>
-          {/each}
-        </tr>
-      {/each}
-    </tbody>
-  </table>
-  <div class="h-4" />
-  <button on:click={() => rerender()} class="border p-2"> Rerender </button>
+<input
+  bind:value={values}
+  bind:checked={values}
+  type="checkbox"
+  id="modal-edit"
+  class="modal-toggle"
+/>
+<div class="grid grid-flow-row auto-rows-max justify-center">
+  <button class="btn btn-primary">asas</button>
+  <button class="btn btn-primary">asas</button>
 </div>
+<form method="post" on:submit|preventDefault={submitForm}>
+  <div class="">
+    <h3 class="py-3 text-lg font-bold font-inter">Edit Data</h3>
+    {#each form_data as fd}
+    <label class="input-group w-full mb-5">
+      <span class="w-1/2">{fd.name}</span>
+      <input
+        type="text"
+        pattern="\d*"
+        maxlength="6"
+        class="input input-bordered w-full text-right font-inter font-bold"
+        name={fd.id}
+        id={fd.id}
+        required
+      />
+    </label>
+    {/each}
+    <p class="py-1 font-inter">This item will be updated!</p>
+
+    <button class="btn btn-success float-right" type="submit">Confirm</button>
+    <label for="modal-edit" class="btn float-right mr-5"
+      >Cancel
+
+      <!-- <button class="btn float-right mr-5">Cancel</button> -->
+    </label>
+  </div>
+</form>

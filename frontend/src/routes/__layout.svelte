@@ -1,17 +1,19 @@
 <script lang="ts">
   import "../app.css";
-  import "gridjs/dist/theme/mermaid.css";
   import Navbar from "@comp/layouts/Navbar.svelte";
+  import "gridjs/dist/theme/mermaid.css"
   import { SvelteToast } from "@zerodevx/svelte-toast";
   import Toasts from "@comp/toast/Toasts.svelte";
   import Sidebar from "@comp/layouts/Sidebar.svelte";
   import { fade } from "svelte/transition";
   import { onMount } from "svelte";
-  let ready: boolean = false;
-  onMount(() => (ready = true));
-</script>
+  import  {themeChange} from 'theme-change'
 
-{#if ready}
+
+onMount(() => {
+  themeChange(false)
+})
+</script>
   <div
     class="base-100"
     in:fade={{ duration: 1000 }}
@@ -21,9 +23,9 @@
     <SvelteToast options={{ reversed: true, intro: { y: 92 } }} />
 
     <!-- <Navbar/> -->
-    <Sidebar><slot /></Sidebar>
+    <Sidebar><slot />
+    </Sidebar>
   </div>
-{/if}
 
 <style>
   :root {

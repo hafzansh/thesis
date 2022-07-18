@@ -1,4 +1,6 @@
 <script lang="ts">
+import { toast } from "@zerodevx/svelte-toast";
+
 import type { Padi } from "../../utils/schema";
   export let open:boolean = false
   export let selected:any
@@ -16,6 +18,7 @@ import type { Padi } from "../../utils/schema";
     data = data.filter(function (el: any) {
       return el.id != selected;
     });
+    toast.push('Data has been deleted!')
     open = !open;
   };
 </script>

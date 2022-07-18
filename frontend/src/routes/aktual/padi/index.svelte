@@ -115,7 +115,7 @@
   };
 </script>
 
-<div in:fly={{ y: 500, duration: 1500 }} out:fade>
+<div in:fly={{ y: 500 ,duration:1000 }} out:fade>
   <DeleteModal bind:open={opena} bind:data {selected} {edit_response} />
   <EditModal bind:values={open} bind:data {selected} {edit_response} />
   <div class="relative capitalize">
@@ -158,7 +158,7 @@
         {...tableProps}
         search={true}
         className={{
-          table: "w-full",
+          table: "w-full table",
           search: "",
         }}
         {data}

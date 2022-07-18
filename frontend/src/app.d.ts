@@ -32,3 +32,6 @@ declare module 'svelte-yup'{
 declare module 'svelte-table'{
     export {SvelteTable} from 'svelte-table'
 }
+declare module 'theme-change'{
+	export {themeChange} from 'theme-change'
+}

@@ -1,5 +1,4 @@
 <script lang="ts">
-import { faTowerBroadcast } from "@fortawesome/free-solid-svg-icons";
 
   export const city: Array<string> = [
     "Tanah Laut",
@@ -31,7 +30,7 @@ import { faTowerBroadcast } from "@fortawesome/free-solid-svg-icons";
     id: 0,
   };
   let select: any = parseInt(selected);
-  const submit = () => {
+  const submit = async () => {
     data = data.map((obj) => {
       let a;
       let a_val
@@ -43,7 +42,12 @@ import { faTowerBroadcast } from "@fortawesome/free-solid-svg-icons";
         a_val = a
       }
       if (obj.id === edit_response.id) {
-        let as = { ...obj, tahun: edit_response.tahun, kota: a_val.toString() };
+        try {
+          
+        } catch (error) {
+          
+        }
+        let as = { ...obj, tahun: edit_response.tahun, kota: a_val.toString(),luas_lahan:edit_response.luas_lahan };
         toast.push('Data has been updated!')
         return as
       }
@@ -71,12 +75,12 @@ import { faTowerBroadcast } from "@fortawesome/free-solid-svg-icons";
         maxlength="4"
         class="input input-bordered w-full text-right font-inter font-bold"
         bind:value={edit_response.tahun}
-        required
+        disabled
       />
     </label>
     <label class="input-group w-full mb-5">
       <span class="w-1/2">Kota</span>
-      <select
+      <select disabled
         class="input input-bordered w-full text-right font-inter font-bold"
         bind:value={select}
       >

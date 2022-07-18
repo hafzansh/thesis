@@ -4,6 +4,7 @@
   import { page } from "$app/stores";
   import { PageNav } from "../../utils/constants";
   import { session } from "$app/stores";
+  let clicked:boolean=false
 </script>
 
 <div class="drawer drawer-mobile">
@@ -61,9 +62,8 @@
           {/if}
         </li>
       {/each}
-      <div class="bottom-0 fixed inset-x-0 bg-base-300">
+      <div class="bottom-0 fixed inset-x-0">
         
-      </div>
     </ul>
   </div>
 </div>

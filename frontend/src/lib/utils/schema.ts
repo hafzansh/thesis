@@ -24,6 +24,17 @@ export type Padi = {
   produksi: number,
   id: number,
 }
+export type Iklim = {
+  stasiun: string,
+  tahun: string,
+  suhu_min: number,
+  suhu_max: number,
+  suhu_avg: number,
+  curah_hujan: number,
+  hari_hujan: number,
+  penyinaran: number,
+  id: number,
+}
 export interface iPadi {
   kota: string,
   tahun: string,
