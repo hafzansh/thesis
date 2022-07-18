@@ -8,9 +8,11 @@ from app.database.base_class import Base
 
 class Iklim(Base):
     __tablename__ = "data_iklim"
-    id = Column(Integer,unique=True, index=True)
-    stasiun = Column(String, primary_key=True, index=True)
-    tahun = Column(String, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True)
+    stasiun = Column(String)
+    tahun = Column(String)
+    # stasiun = Column(String, primary_key=True, index=True)
+    # tahun = Column(String, index=True)
     suhu_min = Column(Float)
     suhu_max = Column(Float)
     suhu_avg = Column(Float)

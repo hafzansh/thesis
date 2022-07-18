@@ -26,7 +26,7 @@ class PadiUpdate(PadiBase):
 # Properties shared by models stored in DB
 class PadiInDBBase(PadiBase):
     id: int
-
+    
     class Config:
         orm_mode = True
 

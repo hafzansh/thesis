@@ -8,7 +8,7 @@
       {
         label: "My First dataset",
         fill: true,
-        lineTension: 0.3,
+        lineTension: 0.5,
         backgroundColor: "rgba(225, 204,230, .3)",
         borderColor: "rgb(205, 130, 158)",
         borderCapStyle: "butt",
@@ -72,7 +72,7 @@
 <div in:fade out:fade></div>
   <Line data={dataLine} options={{responsive:true,animations: {
     tension: {
-      duration: 1000,
+      duration: 2000,
       easing: 'linear',
       from: 1,
       to: 0,

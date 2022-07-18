@@ -44,14 +44,25 @@ type Send = Promise<{
     })
     return response
   }
-  export async function put(url:string,token:string,body:any) {    
+  export async function put_data(url:string,token:string,body:any) {    
     const response = await fetch(url,{
       method: 'PUT',
       headers: {
         accept: 'application/json',
+        'Content-type': 'application/json',
         authorization: `Bearer ${token}`
       },
-      body
+      body: JSON.stringify(body)
+    })
+    return response
+  }
+  export async function delete_data(url:string,token:string) {    
+    const response = await fetch(url,{
+      method: 'DELETE',
+      headers: {
+        accept: 'application/json',
+        authorization: `Bearer ${token}`
+      },
     })
     return response
   }

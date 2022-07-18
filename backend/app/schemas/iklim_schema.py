@@ -1,3 +1,4 @@
+import string
 from typing import Optional
 
 from pydantic import BaseModel
@@ -29,7 +30,6 @@ class IklimUpdate(IklimBase):
 # Properties shared by models stored in DB
 class IklimInDBBase(IklimBase):
     id: int
-
     class Config:
         orm_mode = True
 

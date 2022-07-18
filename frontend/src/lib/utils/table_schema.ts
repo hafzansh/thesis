@@ -44,3 +44,16 @@ export const iklim = [
         hidden: true
     },
 ]
+
+export const iklim_dummy = {
+    stasiun:"1",
+    tahun:"2000",
+    suhu_min:0,
+    suhu_max:0,
+    suhu_avg:0,
+    humidity_avg: 0,
+    curah_hujan:0,
+    hari_hujan:0,
+    penyinaran:0,
+    id:0,
+}

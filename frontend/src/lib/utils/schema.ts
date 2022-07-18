@@ -30,6 +30,7 @@ export type Iklim = {
   suhu_min: number,
   suhu_max: number,
   suhu_avg: number,
+  humidity_avg:number,
   curah_hujan: number,
   hari_hujan: number,
   penyinaran: number,
