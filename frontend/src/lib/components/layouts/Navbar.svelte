@@ -6,8 +6,7 @@
   import Breadcrumb from "../others/breadcrumb.svelte";
   let clicked:boolean=true
 </script>
-
-<div class="navbar bg-base-200 rounded-2xl m-5 shadow">
+<div class="navbar rounded-2xl bg-base-200 m-5 shadow">
   <div class="flex-1">
 
     <label for="my-drawer-2" class="btn btn-ghost drawer-button lg:hidden mt-0"

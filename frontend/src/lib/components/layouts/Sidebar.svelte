@@ -3,7 +3,6 @@
   import Fa from "svelte-fa";
   import { page } from "$app/stores";
   import { PageNav } from "../../utils/constants";
-  import { session } from "$app/stores";
   let clicked:boolean=false
 </script>
 
@@ -13,7 +12,7 @@
     <div class="mr-10">
       <Navbar />
     </div>
-    <div class="pl-5 pr-5">
+    <div class="pl-5 pr-5 ">
       <slot />
     </div>
   </div>

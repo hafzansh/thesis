@@ -29,6 +29,9 @@ module.exports = {
   },
   theme: {
     extend: {
+      backgroundImage: {
+        'hero-pattern': "url('/images/pat.svg')",
+      },
       fontFamily: {
         'inter': ['Inter']
       }

@@ -9,6 +9,8 @@ class AI_ModelBase(BaseModel):
     node: str
     epoch: int
     mae: float
+    size:float
+    rate:float
     loss: Json
     result: Json
 

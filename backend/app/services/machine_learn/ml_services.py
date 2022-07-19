@@ -12,12 +12,10 @@ from app.schemas.ai_model_schema import AI_ModelCreate,AI_ModelUpdate
 class CrudAI_Model(ServicesBase[AI_Model,AI_ModelCreate,AI_ModelUpdate]):
 
     def get_all_data(
-        self, db: Session, offset: int = 0, limit: int = 100
+        self, db: Session
     ) -> List[AI_Model]:
         return (
             db.query(self.model)
-            .offset(offset)
-            .limit(limit)
             .all()
         )
         

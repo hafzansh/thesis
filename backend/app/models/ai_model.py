@@ -12,5 +12,7 @@ class AI_Model(Base):
     node = Column(String)
     epoch = Column(Integer)
     mae = Column(Float)
+    size = Column(Float)
+    rate = Column(Float)
     loss = Column(JSON)
     result = Column(JSON)

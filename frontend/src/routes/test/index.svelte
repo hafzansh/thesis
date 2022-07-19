@@ -22,7 +22,7 @@ import { iklim } from "../../lib/utils/table_schema";
   console.log(data_status)
   console.log(data)
 </script>
-
+<div class="">
 <input
   bind:value={values}
   bind:checked={values}
@@ -61,3 +61,4 @@ import { iklim } from "../../lib/utils/table_schema";
     </label>
   </div>
 </form>
+</div>

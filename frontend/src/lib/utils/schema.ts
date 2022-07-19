@@ -24,6 +24,29 @@ export type Padi = {
   produksi: number,
   id: number,
 }
+export type Model_Type = {
+  epoch: number,
+  id: number,
+  loss: any,
+  mae: number,
+  size:string,
+  rate:number,
+  node: number,
+  path: number,
+  result: any,
+  error?:string
+}
+export type Model_Result = {
+  City: number,
+  Year: number,
+  Prediction: number,
+  'Test Data': number,
+}
+export type Model_Loss = {
+  loss: number,
+  val_loss: number,
+}
+
 export type Iklim = {
   stasiun: string,
   tahun: string,
