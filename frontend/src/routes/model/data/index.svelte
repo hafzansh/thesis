@@ -70,6 +70,21 @@ import type { Model_Type } from "../../../lib/utils/schema";
           h(
             "button",
             {
+              className: "btn btn-primary btn-sm w-[80px]",
+              onClick: () => {
+                window.open(`/model/data/id/${row.cells[0].data}/print`)
+              },
+            },
+            "Print"
+          ),
+          null,
+          h("div", {
+            className: "divider h-1 p-0 m-0",
+          }),
+          null,
+          h(
+            "button",
+            {
               className: "btn btn-primary btn-sm",
               onClick: () => {
 

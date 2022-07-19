@@ -15,7 +15,7 @@ export const handle: Handle = async ({ event, resolve }) => {
         event.locals.user = session
         event.locals.token = cookies.auth_token
     }
-    // console.log(event.request)
+    // console.log(event.params.id)
     return await resolve(event,{ ssr: false })
 }
 

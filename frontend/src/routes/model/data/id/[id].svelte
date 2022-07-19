@@ -2,6 +2,7 @@
   import Line from "svelte-chartjs/src/Line.svelte";
   import { city } from "@utils/constants";
   import {fade,fly} from 'svelte/transition'
+  
 </script>
 
 <script lang="ts">
@@ -120,7 +121,7 @@ import { goto } from "$app/navigation";
         backgroundColor: "rgba(225, 204,230, .3)",
         borderColor: "rgb(205, 130, 158)",
         borderCapStyle: "butt",
-        borderDash: [],
+        borderDash: [1],
         borderDashOffset: 0.0,
         borderJoinStyle: "miter",
         pointBorderColor: "rgb(205, 130,1 58)",
@@ -160,7 +161,7 @@ import { goto } from "$app/navigation";
   const test_size = `${Math.round(parseInt(pog.size)*100)}%`
 </script>
 {#if !pog.error}
-<div in:fly={{y:500,duration:1500}} out:fade>
+<div in:fly={{y:500,duration:1500}} out:fade id="capture">
   <div 
     class="stats bg-neutral text-white shadow flex flex-row justify-start items-start mb-5"
   >
