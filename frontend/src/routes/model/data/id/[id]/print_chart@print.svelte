@@ -29,6 +29,8 @@
     );
     const chart_data1 = result.map((c) => c["Test Data"]);
     const chart_data2 = result.map((c) => c.Prediction);
+  const mae_data = result.map((c) => c.MAE);
+
     const chart_options = {
       title: {
         display: true,
@@ -157,12 +159,12 @@
         },
       ],
     };
-    const test_size = `${Math.round(parseInt(pog.size)*100)}%`    
+    const test_size = `${Math.round(parseFloat(pog.size)*100)}%`    
   </script>
   {#if !pog.error}
   <div class="overflow-hidden p-3 bg-white" id="capture" >
     <div 
-      class="stats bg-neutral text-white shadow flex flex-row justify-start items-start mb-5"
+      class="stats bg-white text-black flex flex-row justify-start items-start mb-5"
     >
   
         <div class="stat place-items-center">

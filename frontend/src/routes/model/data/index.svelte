@@ -1,7 +1,7 @@
 <script context="module">
     import { faChartLine, faSquarePlus } from "@fortawesome/free-solid-svg-icons";
     import { h, html } from "gridjs";
-    
+    import {page} from '$app/stores'
     import Grid from "gridjs-svelte";
     import Fa from "svelte-fa";
     import { fly, fade } from "svelte/transition";
@@ -62,22 +62,7 @@ import type { Model_Type } from "../../../lib/utils/schema";
             },
             "Detail"
           ),
-          null,
-          h("div", {
-            className: "divider h-1 p-0 m-0",
-          }),
-          null,
-          h(
-            "button",
-            {
-              className: "btn btn-primary btn-sm w-[80px]",
-              onClick: () => {
-                window.open(`/model/data/id/${row.cells[0].data}/print`)
-              },
-            },
-            "Print"
-          ),
-          null,
+          null,        
           h("div", {
             className: "divider h-1 p-0 m-0",
           }),
@@ -97,12 +82,13 @@ import type { Model_Type } from "../../../lib/utils/schema";
     },
   ];
   export let data: Model_Type[];
+  const path = `${$page.url.pathname}/print`
 </script>
 
 <div in:fly={{ y: 500, duration: 500 }} out:fade>
   <div class="relative capitalize">
     <div class="absolute top-0 right-0 z-10 ">
-      <button class="btn bg-base-200 text-neutral">
+      <button class="btn bg-base-200 text-neutral" on:click={()=>window.open(path)}>
         <Fa icon={faChartLine} class="mr-3" />
         Report
       </button>

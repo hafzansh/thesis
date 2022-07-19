@@ -41,6 +41,7 @@ export type Model_Result = {
   Year: number,
   Prediction: number,
   'Test Data': number,
+  MAE:number
 }
 export type Model_Loss = {
   loss: number,

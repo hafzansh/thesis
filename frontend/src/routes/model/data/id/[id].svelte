@@ -12,6 +12,9 @@
     Model_Type,
   } from "@utils/schema";
 import { goto } from "$app/navigation";
+import Fa from "svelte-fa";
+import { faArrowCircleLeft, faBackspace, faLightbulb, faPrint, faStepBackward } from "@fortawesome/free-solid-svg-icons";
+import { page } from "$app/stores";
   export let data: any;
   const pog: Model_Type = data;
   if(pog.error){
@@ -30,6 +33,7 @@ import { goto } from "$app/navigation";
   );
   const chart_data1 = result.map((c) => c["Test Data"]);
   const chart_data2 = result.map((c) => c.Prediction);
+  const mae_data = result.map((c) => c.MAE);
   const chart_options = {
     title: {
       display: true,
@@ -158,14 +162,19 @@ import { goto } from "$app/navigation";
       },
     ],
   };
-  const test_size = `${Math.round(parseInt(pog.size)*100)}%`
+  const test_size = `${Math.round(parseFloat(pog.size)*100)}%`
+  const path_chart = `${$page.url.pathname}/print_chart`
+  const path_table = `${$page.url.pathname}/print_table`
 </script>
 {#if !pog.error}
 <div in:fly={{y:500,duration:1500}} out:fade id="capture">
   <div 
     class="stats bg-neutral text-white shadow flex flex-row justify-start items-start mb-5"
   >
-
+  <button on:click="{()=>goto('/model/data')}" class="stat place-items-center">
+    <div class="stat-title">Back</div>
+    <div class="btn text-white stat-value"><Fa icon={faArrowCircleLeft}/>        
+    </button>
       <div class="stat place-items-center">
         <div class="stat-title">Learning Rate</div>
         <div class="stat-value">{pog.rate}</div>
@@ -188,6 +197,20 @@ import { goto } from "$app/navigation";
         <div class="stat-title">Nodes</div>
         <div class="stat-value">{pog.node}</div>
     </div>
+      <div class="stat place-items-center">
+        <div class="stat-title">Print</div>
+        <div class="flex flex-row justify-center gap-2">
+          <button on:click={()=>window.open(path_chart)} class="flex flex-col justify-center items-center">
+            <div class="stat-value text-white mb-1 mt-1 text-[25px]"><Fa icon={faPrint}/> </div>
+            <div class="stat-description badge badge-outline">Chart</div>
+          </button>
+          <button on:click={()=>window.open(path_table)} class="flex flex-col justify-center items-center">
+            <div class="stat-value text-white mb-1 mt-1 text-[25px]"><Fa icon={faPrint}/> </div>
+            <div class="stat-description badge badge-outline">Table</div>
+          </button>
+        </div>
+    </div>
+      
   </div>
   <div class="flex flex-col">
     <div class="flex flex-col w-full">
@@ -209,6 +232,33 @@ import { goto } from "$app/navigation";
         />
       </div>
     </div>
+  </div>
+  <div class="overflow-x-auto flex flex-col justify-center items-center mb-5">
+    <h1 class="font-inter font-bold text-lg justify-center mb-5">
+      MEAN ABSOLUTE ERROR
+    </h1>
+    <table class="table table-compact w-full rounded">
+      <thead>
+        <tr>
+          <th>No</th> 
+          <th>City (Year)</th> 
+          <th>Test Data</th> 
+          <th>Prediction</th> 
+          <th>Mean Absolute Error</th> 
+        </tr>
+      </thead> 
+      <tbody>
+        {#each chart_result_label as lbl,i}
+        <tr>
+          <th>{i+1}</th> 
+          <td>{lbl}</td> 
+          <td>{chart_data1[i]}</td> 
+          <td>{chart_data2[i]}</td> 
+          <td>{mae_data[i]}</td>           
+        </tr>
+        {/each}
+      </tbody>
+    </table>
   </div>
 </div>
 {/if}
