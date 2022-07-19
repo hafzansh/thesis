@@ -19,6 +19,7 @@ onMount(() => {
     in:fade={{ duration: 1000 }}
     out:fade={{ duration: 500 }}
   >
+
   <Toasts/>
     <SvelteToast options={{ reversed: true, intro: { y: 92 } }} />
 
