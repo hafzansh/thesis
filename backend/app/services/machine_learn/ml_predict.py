@@ -35,6 +35,7 @@ class PredictModel:
         result = model.predict(x_scaled)
         final = y_scaler.inverse_transform(result.reshape(1,-1))
         final_result = (x_scaled.tolist())
+        tf.keras.backend.clear_session()
         return final
 
 predict_model = PredictModel()
