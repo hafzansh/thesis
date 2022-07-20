@@ -1,4 +1,4 @@
-import { faComputer, faHome, faServer, faTableColumns, faTableList } from "@fortawesome/free-solid-svg-icons"
+import { faCalculator, faComputer, faHome, faServer, faTableColumns, faTableList } from "@fortawesome/free-solid-svg-icons"
 import type { TPNav } from "./schema"
 
 export const baseApi = 'http://localhost:8000/api'
@@ -29,6 +29,6 @@ export const stasiun: Array<string> = [
 export const PageNav: Array<TPNav> = [
     { title: "Dashboard", path: "/", icon: faHome },
     { title: "Data Aktual", path: '', icon: faTableColumns, sublink: [{ title: "Data Padi", path: "/aktual/padi", icon: faTableList, }, { title: "Data Iklim", path: "/aktual/iklim", icon: faTableColumns, }] },
-    { title: "Model Neural Network", path: '', icon: faTableColumns, sublink: [{ title: "Model Data", path: "/model/data", icon: faServer, }, { title: "Model Training", path: "/model/training", icon: faComputer, }] },
+    { title: "Model Neural Network", path: '', icon: faTableColumns, sublink: [{ title: "Model Data", path: "/model/data", icon: faServer, }, { title: "Model Training", path: "/model/training", icon: faComputer, }, { title: "Predict", path: "/model/predict", icon: faCalculator, }] },
 
 ]
