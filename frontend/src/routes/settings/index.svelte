@@ -3,7 +3,7 @@ import { onMount } from 'svelte/internal';
 
   
   import  {themeChange} from 'theme-change'
-
+import {fly} from 'svelte/transition'
 
 onMount(() => {
   themeChange(false)
@@ -19,9 +19,9 @@ onMount(() => {
                   <div class="stat-value">Change Theme</div>
                   <div class="stat-actions">
                     
-                    <button data-set-theme="autumn" class="btn btn-accent btn-sm" data-act-class="ACTIVECLASS">Autumn</button>
-                    <button data-set-theme="cupcake" class="btn btn-secondary btn-sm" data-act-class="ACTIVECLASS">Cupcake</button>
-                    <button data-set-theme="pastel" class="btn btn-neutral btn-sm" data-act-class="ACTIVECLASS">Pastel</button>
+                    <button in:fly={{y:200,duration:500}} data-set-theme="autumn" class="btn btn-accent btn-sm" data-act-class="ACTIVECLASS">Autumn</button>
+                    <button in:fly={{y:200,duration:1000}} data-set-theme="cupcake" class="btn btn-secondary btn-sm" data-act-class="ACTIVECLASS">Cupcake</button>
+                    <button in:fly={{y:200,duration:1500}} data-set-theme="pastel" class="btn btn-neutral btn-sm" data-act-class="ACTIVECLASS">Pastel</button>
                   </div>
                 </div>
                 

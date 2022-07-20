@@ -1,13 +1,17 @@
 # api.py
+import json
 from typing import Any
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException,Response
 from sqlalchemy.orm import Session
 from app.services.machine_learn.ml_training import ml_model
 from app.services.machine_learn.ml_services import ai_model
+from app.services.machine_learn.ml_predict import predict_model
 from app.services.data.padi import *
 from app.models.user import User
 from app.api import deps
 from app.models.ai_model import *
+from app.schemas.ai_model_schema import *
+from app.schemas.ai_predict_schema import *
 router = APIRouter()
 
 @router.get("/")
@@ -22,7 +26,7 @@ def list_data_model(
     return response
 
 @router.get("/id/{id}")
-def get_data_Iklim_by_id(    
+def get_data_by_id(    
     *,
     db: Session = Depends(deps.get_db),            
     id:int,
@@ -32,6 +36,15 @@ def get_data_Iklim_by_id(
     if not response:
         raise HTTPException(status_code=404, detail="Item not found")
     return response
+
+
+@router.post("/predict/")
+def train_model(*,db:Session=Depends(deps.get_db), input: AI_PredictBase,
+current_user: User = Depends(deps.get_current_active_user),
+) -> Any:    
+    result = predict_model.predict(input)
+    x = {"result": result.flatten().tolist()}
+    return json.dumps(x)
 
 @router.post("/training/")
 def train_model(        
