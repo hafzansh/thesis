@@ -33,7 +33,7 @@ class MLModel:
             keras.layers.Dense(units=node,activation='relu',input_shape=(13,)),    
             keras.layers.Dense(units=1)
         ])
-        model.compile(loss='mean_squared_error',optimizer=tf.keras.optimizers.Adam(learning_rate=rate))
+        model.compile(loss='mean_absolute_error',optimizer=tf.keras.optimizers.Adam(learning_rate=rate))
         history=model.fit(tf.expand_dims(x_train,axis=-1),y_train,epochs=epoch,validation_data=(x_test,y_test))
         history_json = pd.DataFrame(history.history['loss'],columns=["loss"])  
         history_json["val_loss"] = history.history['val_loss']
