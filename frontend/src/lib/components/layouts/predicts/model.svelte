@@ -88,7 +88,6 @@
                     result: row.cells[8].data,
                   },
                 ];
-                console.log(data_binded);
                 val = row.cells[1].data;
                 next=true
               },

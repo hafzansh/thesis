@@ -14,7 +14,6 @@ class AI_ModelBase(BaseModel):
     loss: Json
     result: Json
 
-
 # Properties to receive on AI_Model creation
 class AI_ModelCreate(AI_ModelBase):
     pass

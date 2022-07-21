@@ -4,6 +4,7 @@
   let next = true;
   let prev = false;
   let data: any[] = [];
+  let data2: any[] = [];
   let file: any;
   let val: any;
   let data_binded: Model_Type[] = [];
@@ -118,7 +119,7 @@
         <div transition:slide class="bg-slate-600 m-5 h-full rounded-lg">
           <div class="flex text-slate-300 justify-center items-center h-full">
             {#if !file}
-              <Upload bind:next bind:file bind:data />
+              <Upload bind:next bind:file bind:data/>
             {/if}
             {#if file}
               <CSVTable bind:data />

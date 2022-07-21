@@ -1,17 +1,20 @@
 # api.py
 import json
+from datetime import datetime
 from typing import Any
 from fastapi import APIRouter, Depends, HTTPException,Response
 from sqlalchemy.orm import Session
 from app.services.machine_learn.ml_training import ml_model
-from app.services.machine_learn.ml_services import ai_model
+from app.services.machine_learn.ml_services import ai_model,ai_pred
 from app.services.machine_learn.ml_predict import predict_model
 from app.services.data.padi import *
 from app.models.user import User
 from app.api import deps
 from app.models.ai_model import *
+from app.models.ai_predict import *
 from app.schemas.ai_model_schema import *
 from app.schemas.ai_predict_schema import *
+from app.schemas.ai_predicts_schema import *
 router = APIRouter()
 
 @router.get("/")
@@ -23,6 +26,16 @@ def list_data_model(
     Retrieve users.
     """    
     response = ai_model.get_all_data(db)
+    return response
+@router.get("/predicts/data")
+def list_data_model(
+    db: Session = Depends(deps.get_db),
+    current_user: User = Depends(deps.get_current_active_user),
+):
+    """
+    Retrieve Predictions Data.
+    """    
+    response = ai_pred.get_all_data(db)
     return response
 
 @router.get("/id/{id}")
@@ -45,6 +58,21 @@ current_user: User = Depends(deps.get_current_active_user),
     result = predict_model.predict(input)
     x = {"result": result.flatten().tolist()}
     return json.dumps(x)
+
+@router.post("/predicts/")
+def train_model(*,db:Session=Depends(deps.get_db), input: AI_PredictsBase,
+current_user: User = Depends(deps.get_current_active_user),
+) -> Any:
+    result = predict_model.predicts(input)
+    post = ai_pred.post_predict(db=db,obj_in={        
+        "path": input.path,
+        "data": result,
+    })    
+    if not result:
+        raise HTTPException(status_code=500,detail="Something went wrong!")
+    return HTTPException(
+        status_code=200,detail=post
+    )
 
 @router.post("/training/")
 def train_model(        

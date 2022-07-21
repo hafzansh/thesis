@@ -38,4 +38,21 @@ class PredictModel:
         tf.keras.backend.clear_session()
         return final
 
+
+    def predicts(self,base):
+        path = base.path
+        raw_data = pd.json_normalize(base.data)
+        data = raw_data.values
+        x_scaler = load(path+'/scaler_x.bin')
+        y_scaler = load(path+'/scaler_y.bin')
+        model = keras.models.load_model(path+'/model.h5')
+        x_scaled = x_scaler.transform(data)
+        predicted = model.predict(x_scaled)
+        result = y_scaler.inverse_transform(predicted.reshape(-1,1))
+        df_result = pd.DataFrame(result,columns=["result"])
+        df_base = pd.DataFrame(raw_data)
+        df_result = pd.concat([df_base,df_result],axis=1,join='inner')
+        json_result = df_result.to_json(orient="records")
+        keras.backend.clear_session()
+        return json_result
 predict_model = PredictModel()

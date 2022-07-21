@@ -1,7 +1,7 @@
 
 from typing import TYPE_CHECKING
 
-from sqlalchemy import JSON, Column, Integer, String, Float
+from sqlalchemy import JSON, Column, Integer, String, Float, TIMESTAMP
 
 from app.database.base_class import Base
 
