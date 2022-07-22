@@ -169,8 +169,7 @@ import { page } from "$app/stores";
 {#if !pog.error}
 <div in:fly={{y:500,duration:1500}} out:fade id="capture">
   <div 
-    class="stats bg-neutral text-white shadow flex flex-row justify-start items-start mb-5"
-  >
+    class="stats bg-neutral text-white shadow flex flex-row justify-start items-start mb-5">
   <button on:click="{()=>goto('/model/data')}" class="stat place-items-center">
     <div class="stat-title">Back</div>
     <div class="btn text-white stat-value"><Fa icon={faArrowCircleLeft}/>        

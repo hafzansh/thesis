@@ -62,12 +62,15 @@
     max-w-lg"
     >
       <div class="font-medium self-center text-xl sm:text-3xl text-gray-800">
-        Welcome Back
-      </div>
-      <div class="mt-4 self-center text-xl sm:text-sm text-gray-800">
-        Enter your credentials to access your account
-      </div>
-      <div class="mt-5">
+        <div class="flex w-full items-center justify-center mb-5 h-20">
+          <img src="/images/logo.png" class="h-14 w-14" alt="logo" />
+    
+          <span class="text-[60px] font-bold align-middle ml-3 mb-2"
+            >JST<span class="text-primary font-semibold">PADI</span></span
+          >
+        </div>
+      </div>      
+      <div class="">
         <form on:submit|preventDefault={login} method="post">
           <div>
             <div class="label">

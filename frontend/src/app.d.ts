@@ -8,30 +8,36 @@ declare namespace App {
 		userid: string;
 		user: any;
 		session: string;
-		token:string
+		token: string
 	}
 	// interface Platform {}
 	interface Session {
 		user: {
-			id:number,
-			username:string,
-			full_name:string,
-			is_superuser:boolean,
-			auth_token:string,
-			authenticated:boolean
+			id: number,
+			username: string,
+			full_name: string,
+			is_superuser: boolean,
+			auth_token: string,
+			authenticated: boolean
 		}
+	}
+	interface Navigator {
+		msSaveBlob: (blob: Blob, fileName: string) => boolean
 	}
 	// interface Stuff {}
 }
 declare module '@fortawesome/pro-solid-svg-icons/index.es' {
 	export * from '@fortawesome/pro-solid-svg-icons';
 }
-declare module 'svelte-yup'{
+declare module 'svelte-yup' {
 	export * from 'svelte-yup'
 }
-declare module 'svelte-table'{
-    export {SvelteTable} from 'svelte-table'
+declare module 'svelte-table' {
+	export { SvelteTable } from 'svelte-table'
 }
-declare module 'theme-change'{
-	export {themeChange} from 'theme-change'
+declare module 'theme-change' {
+	export { themeChange } from 'theme-change'
+}    
+declare module 'chart.js' {
+	export {chartjs} from 'chart.js'
 }

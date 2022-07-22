@@ -4,6 +4,13 @@ from pydantic import BaseModel, Json
 
 
 # Shared properties
+class AI_TrainingBase(BaseModel):
+    node:int
+    size:float
+    rate:float
+    ep:int
+
+
 class AI_PredictsBase(BaseModel):
     path: str
     data: object

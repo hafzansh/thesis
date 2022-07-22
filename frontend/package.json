@@ -27,6 +27,7 @@
 		"svelte": "^3.44.0",
 		"svelte-check": "^2.7.1",
 		"svelte-forms-lib": "^2.0.1",
+		"svelte-loading-spinners": "^0.1.7",
 		"svelte-preprocess": "^4.10.6",
 		"tailwindcss": "^3.1.4",
 		"tslib": "^2.3.1",
@@ -38,6 +39,7 @@
 	"type": "module",
 	"dependencies": {
 		"@fortawesome/free-solid-svg-icons": "^6.1.1",
+		"chart.js": "^3.8.0",
 		"daisyui": "^2.18.1",
 		"simple-json-viewer": "^0.6.0",
 		"svelte-chartjs": "^1.1.4",

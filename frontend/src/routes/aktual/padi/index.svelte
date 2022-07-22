@@ -2,18 +2,23 @@
   import Grid from "gridjs-svelte";
   import { fly, fade } from "svelte/transition";
   import type { Padi } from "../../../lib/utils/schema";
-  import { faChartLine, faSquarePlus } from "@fortawesome/free-solid-svg-icons";
+  import {
+    faChartLine,
+    faFileCsv,
+    faSquarePlus,
+  } from "@fortawesome/free-solid-svg-icons";
   import AddModal from "@lib/components/modals/padi/add_modal.svelte";
   import EditModal from "@lib/components/modals/padi/edit_modal.svelte";
   import DeleteModal from "@lib/components/modals/padi/delete_modal.svelte";
   import Fa from "svelte-fa";
   import { h } from "gridjs";
   import { get_data } from "../../../lib/shared/api";
-import { baseApi } from "../../../lib/utils/constants";
-import { session } from "$app/stores";
-import { padi_dummy } from "../../../lib/utils/table_schema";
+  import { baseApi } from "../../../lib/utils/constants";
+  import { page, session } from "$app/stores";
+  import { padi_dummy } from "../../../lib/utils/table_schema";
+import { downloadCSV } from "../../../lib/components/others/blob_download";
   export let data: Padi[] = [];
-  let edit_response:Padi = padi_dummy
+  let edit_response: Padi = padi_dummy;
   const columns = [
     {
       name: "ID",
@@ -27,7 +32,7 @@ import { padi_dummy } from "../../../lib/utils/table_schema";
     {
       name: "Kota",
       id: "kota",
-      width: "200px"
+      width: "200px",
     },
     {
       name: "Luas Lahan",
@@ -52,8 +57,7 @@ import { padi_dummy } from "../../../lib/utils/table_schema";
         return h(
           "div",
           {
-            className:
-              "p-0 flex btn-group justify-center font-inter",
+            className: "p-0 flex btn-group justify-center font-inter",
           },
           h(
             "button",
@@ -76,7 +80,6 @@ import { padi_dummy } from "../../../lib/utils/table_schema";
               className: "btn btn-primary btn-sm",
               onClick: () => {
                 delete_data(row.cells[0].data);
-
               },
             },
             "Delete"
@@ -104,16 +107,25 @@ import { padi_dummy } from "../../../lib/utils/table_schema";
     ).then((res) => res.json());
     edit_response = response;
   };
+
+  
+  const path = `${$page.url.pathname}/print`
+
 </script>
+
 <DeleteModal bind:values={delete_modal} bind:data {edit_response} />
 <EditModal bind:values={edit_modal} {edit_response} />
 <AddModal bind:values={add_modal} />
 <div in:fly={{ y: 500, duration: 500 }} out:fade>
   <div class="relative capitalize">
     <div class="absolute top-0 right-0 z-10 ">
-      <button class="btn bg-base-200 text-neutral">
-        <Fa icon={faChartLine} class="mr-3" />
-        Report
+      <button class="btn bg-base-200 text-neutral" on:click={()=>downloadCSV(data)}>
+        <Fa icon={faFileCsv} class="mr-3" />
+        CSV
+      </button>
+      <button class="btn bg-base-200 text-neutral"  on:click={()=>window.open(path)}>
+        <Fa icon={faChartLine} class="mr-3"/>
+        Table
       </button>
       <button
         class="btn bg-base-200 text-neutral"

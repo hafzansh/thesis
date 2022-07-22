@@ -38,6 +38,14 @@ class CrudAI_Pred(ServicesBase[AI_Predict,AI_PredictsCreate,AI_PredictsUpdate]):
             db.query(self.model)
             .all()
         )
+    def get_data_by_id(
+        self, db: Session,id:id
+    ) -> List[AI_Predict]:
+        return (
+            db.query(self.model)
+            .filter_by(id=id)
+            .all()
+        )
     def post_predict(
         self, db: Session, *, obj_in: AI_PredictsCreate
     ) -> AI_Predict:        

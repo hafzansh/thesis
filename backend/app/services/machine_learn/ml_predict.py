@@ -33,10 +33,26 @@ class PredictModel:
         x = np.array([kota,tahun,luas_panen,luas_lahan,produktivitas,stasiun,suhu_min,suhu_max,suhu_avg,humidity_avg,curah_hujan,hari_hujan,penyinaran])
         x_scaled = x_scaler.transform(x.reshape(1,-1))
         result = model.predict(x_scaled)
-        final = y_scaler.inverse_transform(result.reshape(1,-1))
-        final_result = (x_scaled.tolist())
+        final = y_scaler.inverse_transform(result.reshape(1,-1))        
         tf.keras.backend.clear_session()
-        return final
+        res_value = final.flatten().tolist()
+        body = [{
+            "kota": kota,
+            "tahun": tahun,
+            "luas_panen": luas_panen,
+            "luas_lahan": luas_lahan,
+            "produktivitas": produktivitas,
+            "stasiun": stasiun,
+            "suhu_min": suhu_min,
+            "suhu_max": suhu_max,
+            "suhu_avg": suhu_avg,
+            "humidity_avg": humidity_avg,
+            "curah_hujan": curah_hujan,
+            "hari_hujan": hari_hujan,
+            "penyinaran": penyinaran,
+            "result": res_value[0]
+        }]
+        return body
 
 
     def predicts(self,base):

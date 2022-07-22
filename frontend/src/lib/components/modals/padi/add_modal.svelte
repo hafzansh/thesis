@@ -12,7 +12,7 @@
     }
     toast.push("Data has been Added");
     values = !values;
-    window.location.href = "/aktual/padi";
+    // window.location.href = "/aktual/padi";
   }
 </script>
 

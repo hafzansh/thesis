@@ -6,9 +6,11 @@
   import Grid from "gridjs-svelte";
   import { onMount } from "svelte/internal";
   import { toast } from "@zerodevx/svelte-toast";
+import { goto } from "$app/navigation";
 
   export let data: any;
   let grid_data: any[] = [];
+  let id:any
   export let val: any;
   let body = { path: val, data: data };
   const predict = async () => {
@@ -18,7 +20,8 @@
         $session.user.auth_token,
         body
       );
-      const response = await res.json();
+      const response = await res.json();      
+      id = response.detail.id
       grid_data = JSON.parse(response.detail.data);
       grid_data.map((e: any) => {
         e.kota = city[e.kota - 1];
@@ -59,7 +62,7 @@
         <article class="prose">
           <h1 class="">Prediction Result</h1>
         </article>
-        <button class="btn btn-primary">Full Detail</button>
+        <button class="btn btn-primary" on:click={()=>goto(`/model/prediction/id/${id}`)}>Full Detail</button>
       </div>
       <Grid
         pagination={{ enabled: true, limit: 5 }}

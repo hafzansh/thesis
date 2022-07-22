@@ -2,7 +2,7 @@
   import Grid from "gridjs-svelte";
   import { fly, fade } from "svelte/transition";
   import type { Iklim } from "../../../lib/utils/schema";
-  import { faChartLine, faSquarePlus } from "@fortawesome/free-solid-svg-icons";
+  import { faChartLine, faFileCsv, faSquarePlus } from "@fortawesome/free-solid-svg-icons";
   import AddModal from "@lib/components/modals/iklim/add_modal.svelte";
   import EditModal from "@lib/components/modals/iklim/edit_modal.svelte";
   import DeleteModal from "@lib/components/modals/iklim/delete_modal.svelte";
@@ -10,7 +10,8 @@
   import { h } from "gridjs";
   import { get_data } from "../../../lib/shared/api";
 import { baseApi } from "../../../lib/utils/constants";
-import { session } from "$app/stores";
+import { page, session } from "$app/stores";
+import { downloadCSV } from "../../../lib/components/others/blob_download";
   export let data: Iklim[] = [];
   let edit_response:Iklim = {
     stasiun:"1",
@@ -124,6 +125,7 @@ import { session } from "$app/stores";
     ).then((res) => res.json());
     edit_response = response;
   };
+  const path = `${$page.url.pathname}/print`
 </script>
 
 <DeleteModal bind:values={delete_modal} bind:data {edit_response} />
@@ -132,9 +134,13 @@ import { session } from "$app/stores";
 <div in:fly={{ y: 500, duration: 500 }} out:fade>
   <div class="relative capitalize">
     <div class="absolute top-0 right-0 z-10 ">
-      <button class="btn bg-base-200 text-neutral">
+      <button class="btn bg-base-200 text-neutral" on:click={()=>downloadCSV(data)}>
+        <Fa icon={faFileCsv} class="mr-3" />
+        CSV
+      </button>
+      <button class="btn bg-base-200 text-neutral" on:click={()=>window.open(path)}>
         <Fa icon={faChartLine} class="mr-3" />
-        Report
+        Table
       </button>
       <button
         class="btn bg-base-200 text-neutral"
