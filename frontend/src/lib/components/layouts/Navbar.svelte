@@ -15,7 +15,7 @@
     <Breadcrumb path={$page.url.pathname} />
   </div>
   <div class="flex-none">
-    <p class="capitalize font-inter text-xl mr-3">{$session.user.full_name}</p>
+    <p class="capitalize font-inter text-xl mr-3">@{$session.user.username}</p>
     <div class="dropdown dropdown-end">
       <label for="" tabindex="0" class="btn btn-outline rounded-full">
           <Fa icon={faUserAstronaut} class="text-[30px] text-primary"/>
@@ -31,7 +31,6 @@
             <span class="badge">New</span>
           </a>
         </li>
-        <li><a href="/settings">Settings</a></li>
         <li><a href="/logout">Logout</a></li>
       </ul>
     </div>

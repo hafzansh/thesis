@@ -10,7 +10,7 @@ export const get: RequestHandler = async () => {
         // the cookie should expire immediately
         expires: new Date(0),
       }),
-      location: '/',
+      location: '/login',
     },
   }
 }
