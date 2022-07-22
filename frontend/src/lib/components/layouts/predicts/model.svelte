@@ -144,15 +144,15 @@
 
 <div class="flex flex-col w-full h-full items-center">
     <div class="mx-10 mt-5">
-      <article class="prose text-slate-300 mb-2">
-        <h1 class="text-slate-300">Model</h1>
+      <article class="prose mb-2">
+        <h1 class="">Model</h1>
       </article>
 
-      <Grid width="w-full" pagination={{ enabled: true, limit: 6, summary: true, buttonsCount: 5 }} {columns} {data} />
+      <Grid width="w-full" sort={true} pagination={{ enabled: true, limit: 6, summary: true, buttonsCount: 5 }} {columns} {data} />
   </div>
   <div class="ml-52 w-full">
     <article class="prose">
-        <h1 class="text-slate-300 my-2">Selected Model</h1>
+        <h1 class="my-2">Selected Model</h1>
       </article>
       <Grid width="w-full" data={data_binded} columns={columns2} />
   </div>

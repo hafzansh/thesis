@@ -22,8 +22,9 @@ class AI_PredictsUpdate(AI_PredictsBase):
 # Properties shared by models stored in DB
 class AI_PredictsInDBBase(AI_PredictsBase):
     id: int    
-    class Config:
-        orm_mode = True
+    created_on: str
+    # class Config:
+    #     orm_mode = True
 
 
 # Properties to return to client

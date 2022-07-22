@@ -8,7 +8,7 @@
   import { toast } from "@zerodevx/svelte-toast";
 import PredictModal from "../../../lib/components/modals/predict/predict_modal.svelte";
   
-  let val: any = "Assets/D2a87affb04142faa7107dee3ac757a1";
+  let val: any = "Assets/This will be the name of model path";
   let body: any;
   let luas_panen: any,
     luas_lahan: any,
@@ -352,7 +352,7 @@ import PredictModal from "../../../lib/components/modals/predict/predict_modal.s
         </table>
       </div>
       <div class="w-4/12">
-        <div class="mockup-code bg-success h-[60vh]">
+        <div class="mockup-code bg-success h-[60vh] text-black">
           <pre data-prefix="1"><code
               >Luas Panen     : {luas_panen} (Hektar)</code
             ></pre>

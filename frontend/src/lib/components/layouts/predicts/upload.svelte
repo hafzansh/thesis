@@ -1,7 +1,9 @@
-<script lang="typescript">
+<script lang="ts">
+import { toast } from "@zerodevx/svelte-toast";
+
   import papa from "papaparse";
   import { city, stasiun } from "../../../utils/constants";
-  export let data: any;
+  export let data:any
   export let next: boolean;
   let a: { path?: string; data?: any } = {};
   export let file: any;
@@ -20,13 +22,19 @@
       complete: function (results) {
         
         data = results.data;
+        if (!data[1].kota && !data[1].tahun){
+          toast.push('Format Data error')
+          
+          setTimeout(window.location.href = '/model/predicts',1000)
+        }
+
       },
     });
     next = !next;
   };
 </script>
 
-<button class="btn btn-info btn-xl" on:click={triggerUpload}>
+<button class="btn btn-primary text-primary-content btn-xl" on:click={triggerUpload}>
   Upload a CSV file
 </button>
 <input

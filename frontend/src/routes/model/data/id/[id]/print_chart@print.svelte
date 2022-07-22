@@ -163,6 +163,14 @@
   </script>
   {#if !pog.error}
   <div class="overflow-hidden p-3 bg-white" id="capture" >
+    <div class="flex flex-row justify-start items-center w-full">
+      <article class="prose">
+        <h1>Model : </h1>
+      </article>
+      <article class="prose">
+        <h1>&nbsp;{pog.path}</h1>
+      </article>
+    </div>
     <div 
       class="stats bg-white text-black flex flex-row justify-start items-start mb-5"
     >

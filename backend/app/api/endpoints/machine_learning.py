@@ -63,13 +63,28 @@ current_user: User = Depends(deps.get_current_active_user),
 def train_model(*,db:Session=Depends(deps.get_db), input: AI_PredictsBase,
 current_user: User = Depends(deps.get_current_active_user),
 ) -> Any:
+    timestamp = datetime.now()
     result = predict_model.predicts(input)
-    post = ai_pred.post_predict(db=db,obj_in={        
+    post = ai_pred.post_predict(db=db,obj_in={  
+        "created_on": timestamp,
         "path": input.path,
         "data": result,
     })    
     if not result:
         raise HTTPException(status_code=500,detail="Something went wrong!")
+    return HTTPException(
+        status_code=200,detail=post
+    )
+@router.post("/test/")
+def train_model(*,db:Session=Depends(deps.get_db), input: AI_PredictsBase,
+
+) -> Any:
+    
+    post = ai_pred.post_predict(db=db,obj_in={        
+        "created_on": "pog i was here pog",
+        "path": "input.path",
+        "data": "result",
+    })        
     return HTTPException(
         status_code=200,detail=post
     )
