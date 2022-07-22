@@ -1,6 +1,7 @@
 <script context="module">
 
     import { goto } from "$app/navigation";
+import { page } from "$app/stores";
 import { faArrowCircleLeft, faPrint } from "@fortawesome/free-solid-svg-icons";
     import Bar from "svelte-chartjs/src/Bar.svelte";
 import Fa from "svelte-fa";
@@ -62,6 +63,8 @@ import Fa from "svelte-fa";
       ],
     },
   };
+  const path_chart = `${$page.url.pathname}/print_chart`
+  const path_table = `${$page.url.pathname}/print_table`
 </script>
 <div 
     class="stats bg-neutral text-white shadow flex flex-row justify-start items-start mb-5">
@@ -84,11 +87,11 @@ import Fa from "svelte-fa";
       <div class="stat place-items-center">
         <div class="stat-title">Print</div>
         <div class="flex flex-row justify-center gap-2">
-          <button on:click={()=>window.open('')} class="flex flex-col justify-center items-center">
+          <button on:click={()=>window.open(path_chart)} class="flex flex-col justify-center items-center">
             <div class="stat-value text-white mb-1 mt-1 text-[25px]"><Fa icon={faPrint}/> </div>
             <div class="stat-description badge badge-outline">Chart</div>
           </button>
-          <button on:click={()=>window.open('')} class="flex flex-col justify-center items-center">
+          <button on:click={()=>window.open(path_table)} class="flex flex-col justify-center items-center">
             <div class="stat-value text-white mb-1 mt-1 text-[25px]"><Fa icon={faPrint}/> </div>
             <div class="stat-description badge badge-outline">Table</div>
           </button>
