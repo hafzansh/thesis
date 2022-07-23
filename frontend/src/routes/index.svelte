@@ -36,8 +36,7 @@
   let iklim_suhu_max = data_iklim.map((c: any) => c.suhu_max);
   let iklim_suhu_avg = data_iklim.map((c: any) => c.suhu_avg);
   let iklim_humid_avg = data_iklim.map((c: any) => c.humidity_avg);
-  let padi_kota = data_padi.map((c: any) => `${city[c.kota - 1]}`);
-  console.log(data_padi);
+  let padi_kota = data_padi.map((c: any) => `${city[c.kota - 1]} (${c.tahun})`);
 
   let chart_padi = {
     labels: padi_kota,

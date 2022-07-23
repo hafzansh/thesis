@@ -54,6 +54,13 @@ export type TrainingParam = {
   rate:number
   epoch:number
 }
+export type Users = {
+  username:string,
+  is_active?:string
+  is_superuser:string
+  full_name:string,
+  id?:number,
+}
 export type Iklim = {
   stasiun: string,
   tahun: string,

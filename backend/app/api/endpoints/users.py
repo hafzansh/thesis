@@ -145,3 +145,22 @@ def update_user(
         )
     user = user_services.update(db, db_obj=user, obj_in=user_in)
     return user
+
+@router.delete("/{user_id}")
+def update_user(
+    *,
+    db: Session = Depends(deps.get_db),
+    user_id: int,
+    current_user: models.user.User = Depends(deps.get_current_active_superuser),
+) -> Any:
+    """
+    Delete a user.
+    """
+    user = user_services.get(db, id=user_id)
+    if not user:
+        raise HTTPException(
+            status_code=404,
+            detail="The user with this username does not exist in the system",
+        )
+    user = user_services.remove(db,id=user_id)
+    return user

@@ -34,7 +34,7 @@
 />
 <div class="modal">
   <div class="modal-box w-11/12 max-w-5xl">
-      <h3 class="py-3 text-lg font-bold font-inter">Edit Padi Data</h3>
+      <h3 class="py-3 text-lg font-bold font-inter">Delete Padi Data</h3>
       <label class="input-group w-full mb-5">
         <span class="w-1/2">Kota</span>
         <select

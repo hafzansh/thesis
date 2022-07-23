@@ -15,7 +15,7 @@
     <Breadcrumb path={$page.url.pathname} />
   </div>
   <div class="flex-none">
-    <p class="capitalize font-inter text-xl mr-3">@{$session.user.username}</p>
+    <p class="capitalize font-inter text-xl mr-3 font-bold">@{$session.user.username}</p>
     <div class="dropdown dropdown-end">
       <label for="" tabindex="0" class="btn btn-outline rounded-full">
           <Fa icon={faUserAstronaut} class="text-[30px] text-primary"/>
@@ -23,14 +23,7 @@
       <ul
         tabindex="0"
         class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-      >
-        <li>
-          <!-- svelte-ignore a11y-missing-attribute -->
-          <a class="justify-between">
-            Profile
-            <span class="badge">New</span>
-          </a>
-        </li>
+      >        
         <li><a href="/logout">Logout</a></li>
       </ul>
     </div>

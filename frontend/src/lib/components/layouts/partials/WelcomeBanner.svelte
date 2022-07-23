@@ -19,6 +19,6 @@ import { session } from "$app/stores";
     <h1 class="text-2xl md:text-3xl  font-bold mb-1">
       {greetings}, {$session.user.full_name} 👋
     </h1>
-    <p>Here is what’s happening with your projects today:</p>
+    <p>Here is a data summary on the server</p>
   </div>
 </div>

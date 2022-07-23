@@ -4,3 +4,7 @@
 <div class="bg-slate-200">
   <slot/>
 </div>
+
+<style>
+  
+</style>
