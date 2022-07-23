@@ -1,0 +1,5 @@
+Konsultasi
+Juni 8, 2022 - Konsultasi mengenai judul, dan authentikasi pada aplikasi
+Juni 29, 2022 - Demo API backend, CRUD data padi dan iklim serta user
+July 9, 2022 - Demo halaman login dan penyimpanan session, penambahan endpoint training pada backend
+July 23, 2022 - Demo Aplikasi 
