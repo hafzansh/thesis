@@ -9,11 +9,13 @@
   import { onMount } from "svelte";
   import  {themeChange} from 'theme-change'
 
-
+let ready=false
 onMount(() => {
   themeChange(false)
+  ready=true
 })
 </script>
+{#if ready}
   <div
     class="base-100"
     in:fade={{ duration: 1000 }}
@@ -27,7 +29,7 @@ onMount(() => {
     <Sidebar><slot />
     </Sidebar>
   </div>
-
+{/if}
 <style>
   :root {
     --toastContainerTop: 1.5rem;

@@ -1,8 +1,28 @@
-<script context="module">  
-  import Bar from "svelte-chartjs/src/Bar.svelte";
-  import { city} from "../../../../../lib/utils/constants";
-  setTimeout(()=>window.print(),1000)
+<script context="module">
+  import { Bar } from "svelte-chartjs";
+  import ChartDataLabels from "chartjs-plugin-datalabels";
+  import {
+    Chart,
+    Title,
+    Tooltip,
+    Legend,
+    BarElement,
+    CategoryScale,
+    LinearScale,
+  } from "chart.js";
 
+  Chart.register(
+    ChartDataLabels,
+    Title,
+    Tooltip,
+    Legend,
+    BarElement,
+    CategoryScale,
+    LinearScale
+  );
+  import { city } from "../../../../../lib/utils/constants";
+  import Logo from "../../../../../lib/components/layouts/partials/Logo.svelte";
+  setTimeout(() => window.print(), 1000);
 </script>
 
 <script lang="ts">
@@ -36,45 +56,25 @@
   };
   let options = {
     responsive: true,
-    scales: {
-      xAxes: [
-        {
-          barPercentage: 1,
-          gridLines: {
-            display: true,
-            color: "rgba(0, 0, 0, 0.1)",
-          },
-        },
-      ],
-      yAxes: [
-        {
-          gridLines: {
-            display: true,
-            color: "rgba(0, 0, 0, 0.1)",
-          },
-          ticks: {
-            beginAtZero: true,
-          },
-        },
-      ],
-    },
   };
 </script>
+
 <div class="flex flex-col w-full h-full bg-white">
-  
+  <div class="flex flex-row w-full">
+    <Logo title="Prediction Data" />
+  </div>
+  <div class="flex flex-row justify-end items-center w-full mt-[-25px]">
+    <article class="prose">
+      <h3>{data[0].path}</h3>
+    </article>
+  </div>
   <div class="flex flex-col bg-white">
     <div class="flex flex-col w-full h-full bg-white">
       <div
         class="w-full flex flex-col bg-white justify-center items-center rounded-lg p-10"
       >
-      <h1 class="font-inter font-bold text-[50px] justify-center">
-        Prediction Data
-      </h1>
         <Bar data={cdata} {options} />
       </div>
     </div>
-  </div>
-  <div class="flex flex-col justify-end items-end w-full mt-10 ml-[-50px]">
-    <i class="font-inter font-bold font-lg">{data[0].path}</i>
   </div>
 </div>

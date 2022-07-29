@@ -1,5 +1,6 @@
 <script context="module">
-    import Line from "svelte-chartjs/src/Line.svelte";
+    import { Line } from 'svelte-chartjs'
+import 'chart.js/auto';
     import { city } from "@utils/constants";
     setTimeout(()=>window.print(),1000)
   </script>
@@ -11,6 +12,7 @@
       Model_Type,
     } from "@utils/schema";
   import { goto } from "$app/navigation";
+import Logo from '../../../../../lib/components/layouts/partials/Logo.svelte';
     export let data: any;
     const pog: Model_Type = data;
     if(pog.error){
@@ -35,12 +37,12 @@
   </script>
   {#if !pog.error}
   <div class="overflow-hidden p-3 bg-white" id="capture" >
-    <div class="flex flex-row justify-start items-center w-full">
+    <div class="flex flex-row w-full">
+      <Logo title="Model Data"  />
+    </div>
+    <div class="flex flex-row justify-end items-center w-full mt-[-25px]">      
       <article class="prose">
-        <h1>Model : </h1>
-      </article>
-      <article class="prose">
-        <h1>&nbsp;{pog.path}</h1>
+        <h3>&nbsp;{pog.path}</h3>
       </article>
     </div>
     <div 
@@ -73,6 +75,8 @@
     <div class="overflow-x-auto mb-5 mt-16">
       <table class="table table-compact w-full rounded">
         <thead>
+        </thead> 
+        <tbody>
           <tr>
             <th>No</th> 
             <th>City (Year)</th> 
@@ -80,8 +84,6 @@
             <th>Prediction</th> 
             <th>Mean Absolute Error</th> 
           </tr>
-        </thead> 
-        <tbody>
           {#each chart_result_label as lbl,i}
           <tr>
             <th>{i+1}</th> 
@@ -91,8 +93,6 @@
             <td>{mae_data[i]}</td>           
           </tr>
           {/each}
-        </tbody>
-        <tfoot>
           <tr>
             <th></th> 
             <td></td> 
@@ -100,6 +100,8 @@
             <td></td> 
             <td>{pog.mae}</td>           
           </tr>
+        </tbody>
+        <tfoot>
         </tfoot>
       </table>
     </div>

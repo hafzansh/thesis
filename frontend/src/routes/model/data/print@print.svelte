@@ -1,4 +1,6 @@
 <script lang="ts">
+import Logo from "../../../lib/components/layouts/partials/Logo.svelte";
+
 import type { Model_Type } from "../../../lib/utils/schema";
 
 setTimeout(()=>window.print(),1000)
@@ -9,21 +11,23 @@ console.log(data[0].mae)
 
 
 <div class="p-0 flex flex-col items-end justify-end w-full h-full bg-white">
-    <h1 class="font-bold font-inter text-[50px] right-0">List Model Data</h1>
+  <div class="flex flex-row w-full">
+    <Logo title="List Model Data" />
+  </div>
     <div class="bg-white w-full h-full">
         <table class="table table-compact w-full rounded bg-white">
           <thead>
-            <tr>
-              <th>No</th> 
-              <th>Path</th> 
-              <th>Epoch</th> 
-              <th>Test Size</th> 
-              <th>Learning Rate</th> 
-              <th>Nodes</th> 
-              <th>MAE</th> 
-            </tr>
-          </thead> 
-          <tbody>
+        </thead> 
+        <tbody>
+              <tr>
+                <th>No</th> 
+                <th>Path</th> 
+                <th>Epoch</th> 
+                <th>Test Size</th> 
+                <th>Learning Rate</th> 
+                <th>Nodes</th> 
+                <th>MAE</th> 
+              </tr>
             {#each data as lbl,i}
             <tr>
               <th>{i+1}</th> 
@@ -36,7 +40,7 @@ console.log(data[0].mae)
             </tr>
             {/each}
           </tbody>
-          <tfoot>
+          <!-- <tfoot>
             <tr>
                 <th>No</th> 
                 <th>Path</th> 
@@ -46,7 +50,7 @@ console.log(data[0].mae)
                 <th>Nodes</th> 
                 <th>MAE</th>          
             </tr>
-          </tfoot>
+          </tfoot> -->
         </table>
       </div>
 </div>

@@ -136,7 +136,7 @@ import { goto } from "$app/navigation";
           />
         </label>
         <p class="py-1 font-inter">
-          This model will be <b class="text-primary">deleted</b>!
+          Model will be created with this <b class="text-primary">Parameter</b>!
         </p>
         <button class="btn btn-success float-right" on:click={submitForm}
           >Confirm</button

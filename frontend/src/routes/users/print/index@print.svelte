@@ -1,12 +1,15 @@
 <script lang="ts">
+import Logo from "../../../lib/components/layouts/partials/Logo.svelte";
+
+
     export let data:any    
     setTimeout(window.print,1500)
 </script>
 
 <div class="flex flex-col w-full justify-end items-end">
-    <article class="prose my-5 mx-5">
-        <h1>List Users</h1>
-    </article>
+    <div class="flex flex-row w-full">
+        <Logo title="List Users" />
+      </div>      
     <table class="table w-full">    
         <thead>
             <tr>

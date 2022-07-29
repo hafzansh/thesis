@@ -5,6 +5,8 @@
 </script>
 
 <script lang="ts">
+import Logo from "../../../../../lib/components/layouts/partials/Logo.svelte";
+
   export let data: any;
   const table_data = JSON.parse(data[0].data);
   table_data.map((e: any) => {
@@ -13,11 +15,21 @@
 </script>
 
 <div class="overflow-x-auto flex flex-col justify-center items-center my-5">
+  <div class="flex flex-row w-full">
+    <Logo title="Prediction Data" />
+  </div>
+  <div class="flex flex-row justify-end items-center w-full mt-[-25px]">
+    <article class="prose">
+      <h3>{data[0].path}</h3>
+    </article>
+  </div>
   <h1 class="font-inter font-bold text-lg justify-center mb-5">
     Parameter Data and Result
   </h1>
   <table class="table table-compact w-full rounded">
     <thead>
+    </thead>
+    <tbody>
       <tr>
         <th>No</th>
         <th>Tahun</th>
@@ -27,8 +39,6 @@
         <th>Produktivitas</th>
         <th>Hasil Prediksi</th>
       </tr>
-    </thead>
-    <tbody>
       {#each table_data as lbl, i}
         <tr>
           <th>{i + 1}</th>
@@ -49,6 +59,8 @@
   </h1>
   <table class="table table-compact w-full rounded">
     <thead>
+    </thead>
+    <tbody>
       <tr>
         <th>No</th>
         <th>Tahun</th>
@@ -61,8 +73,6 @@
         <th>Hari Hujan</th>
         <th>Penyinaran</th>
       </tr>
-    </thead>
-    <tbody>
       {#each table_data as lbl, i}
         <tr>
           <th>{i + 1}</th>
@@ -80,6 +90,6 @@
     </tbody>
   </table>
 </div>
-<div class="flex flex-col justify-end items-end w-full mt-10 ml-[-50px]">
+<div class="flex flex-col justify-end items-end w-full mt-10 ml-[-50px] hidden">
     <i class="font-inter font-bold font-lg">{data[0].path}</i>
 </div>

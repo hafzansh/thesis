@@ -8,12 +8,15 @@
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
+		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
+		"config": "vite build --config vite.config.ts"
+
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",
 		"@tailwindcss/typography": "^0.5.4",
+		"@types/chart.js": "^2.9.37",
 		"@types/cookie": "^0.5.1",
 		"@types/node-fetch": "^2.6.2",
 		"@types/papaparse": "^5.3.2",
@@ -39,11 +42,20 @@
 	"type": "module",
 	"dependencies": {
 		"@fortawesome/free-solid-svg-icons": "^6.1.1",
+		"@tanstack/svelte-table": "^8.2.6",
 		"chart.js": "^3.8.0",
+		"chartjs": "^0.3.24",
+		"chartjs-plugin-datalabels": "^2.0.0",
 		"daisyui": "^2.18.1",
+		"gridjs": "^5.0.2",
+		"gridjs-buttons": "^1.0.2",
+		"gridjs-svelte": "^2.1.1",
+		"html2canvas": "^1.4.1",
 		"simple-json-viewer": "^0.6.0",
-		"svelte-chartjs": "^1.1.4",
+		"svelte-chartjs": "^2.0.1",
 		"svelte-fa": "^3.0.2",
+		"svelte-simple-datatables": "^0.2.3",
+		"theme-change": "^2.1.0",
 		"yup": "^0.32.11"
 	}
 }

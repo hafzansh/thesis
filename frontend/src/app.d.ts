@@ -38,6 +38,3 @@ declare module 'svelte-table' {
 declare module 'theme-change' {
 	export { themeChange } from 'theme-change'
 }    
-declare module 'chart.js' {
-	export {chartjs} from 'chart.js'
-}

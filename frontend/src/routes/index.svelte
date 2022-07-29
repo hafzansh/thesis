@@ -27,7 +27,30 @@
   });
   export let data_padi;
   export let data_iklim;
-  import Line from "svelte-chartjs/src/Line.svelte";
+  import { Line } from 'svelte-chartjs'
+  
+  import {
+    Chart as ChartJS,
+    Title,
+    Tooltip,
+    Legend,
+    LineElement,
+    LinearScale,
+    PointElement,
+    CategoryScale,
+  } from 'chart.js';
+  import ChartDataLabels from "chartjs-plugin-datalabels";
+
+  ChartJS.register(
+    ChartDataLabels,
+    Title,
+    Tooltip,
+    Legend,
+    LineElement,
+    LinearScale,
+    PointElement,
+    CategoryScale
+  );
   import { city } from "../lib/utils/constants";
   let padi_labels: any;
   let padi_produksi = data_padi.map((c: any) => c.produksi);
@@ -108,6 +131,15 @@
       },
     ],
   };
+  let chart_options = {
+    responsive: true,
+    plugins: {
+      datalabels:{
+        display:false
+      },
+      legend: { display: false } 
+    }
+  }
 </script>
 
 <div in:fade out:fade />
@@ -119,10 +151,7 @@
       <figure>
         <Line
           data={chart_padi}
-          options={{
-            responsive: true,
-            plugins: { legend: { display: false } },
-          }}
+          options={chart_options}
         />
       </figure>
     </div>
@@ -133,10 +162,7 @@
       <figure>
         <Line
           data={chart_suhu_avg}
-          options={{
-            responsive: true,
-            plugins: { legend: { display: false } },
-          }}
+          options={chart_options}
         />
       </figure>
     </div>
@@ -147,10 +173,7 @@
       <figure>
         <Line
           data={chart_suhu_max}
-          options={{
-            responsive: true,
-            plugins: { legend: { display: false } },
-          }}
+          options={chart_options}
         />
       </figure>
     </div>
@@ -161,10 +184,7 @@
       <figure>
         <Line
           data={chart_suhu_min}
-          options={{
-            responsive: true,
-            plugins: { legend: { display: false } },
-          }}
+          options={chart_options}
         />
       </figure>
     </div>
@@ -175,10 +195,7 @@
       <figure>
         <Line
           data={chart_humid_avg}
-          options={{
-            responsive: true,
-            plugins: { legend: { display: false } },
-          }}
+          options={chart_options}
         />
       </figure>
     </div>
