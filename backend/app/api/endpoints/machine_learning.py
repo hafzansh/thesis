@@ -84,6 +84,21 @@ def delete_model(
         raise HTTPException(status_code=404, detail="Item not found")
     item = ai_model.remove(db=db, id=id)
     return item
+@router.delete("/prediction/id/{id}")
+def delete_model(
+    *,
+    db: Session = Depends(deps.get_db),
+    id: int,
+    current_user: User = Depends(deps.get_current_active_superuser),
+) -> Any:
+    """
+    Delete an item.
+    """
+    item = ai_pred.get(db=db, id=id)
+    if not item:
+        raise HTTPException(status_code=404, detail="Item not found")
+    item = ai_pred.remove(db=db, id=id)
+    return item
 
 @router.post("/predict/")
 def predict(*, db: Session = Depends(deps.get_db), input: AI_PredictBase,
