@@ -52,7 +52,9 @@ export type TrainingParam = {
   node: number,
   size:number,
   rate:number
-  epoch:number
+  epoch:number,
+  target?:number,
+  limit?:number
 }
 export type Users = {
   username:string,

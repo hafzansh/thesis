@@ -144,19 +144,21 @@ def train_model(
     size: float = 0.3,
     rate: float = 0.01,
     ep: int = 500,
+    limit: int = 100,
+    target: float = 0.20,
     current_user: User = Depends(deps.get_current_active_superuser),
 ) -> Any:
     data = padi.get_all_padi_iklim(db)
-    trained = ml_model.train(data, node, size, rate, ep)
+    trained = ml_model.train(data, node, size, rate, ep,target,limit)
     post = ai_model.post_data(db=db, obj_in={
         "path": ml_model.path,
-        "node": node,
+        "node": ml_model.node,
         "epoch": ep,
         "mae": ml_model.mae,
-        "size": size,
-        "rate": rate,
+        "size": ml_model.size,
+        "rate": ml_model.rate,
         "loss": ml_model.history,
-        "result":  trained
+        "result":  trained['data']
     })
     if not trained:
         raise HTTPException(status_code=500, detail="Something went wrong")

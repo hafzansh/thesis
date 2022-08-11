@@ -4,7 +4,6 @@ import { baseApi } from "../../../../../lib/utils/constants";
 
 export const get:RequestHandler = async(event)=>{
     const param = event.params
-    console.log(param.id)
     const response = await get_data(`${baseApi}/model/predicts/data/${param.id}`,event.locals.token)
     const data = await response.json()
     return{

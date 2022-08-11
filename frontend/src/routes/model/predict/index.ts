@@ -20,7 +20,6 @@ export const post:RequestHandler = async(event) =>{
         "hari_hujan": form.get('hari_hujan'),
         "penyinaran": form.get('penyinaran')
       }
-      console.log(body)
       const response = await post_data(`${baseApi}/model/predict/`,event.locals.token,body)
       const res = await response.json()
       if (response.status ==422){
@@ -29,7 +28,6 @@ export const post:RequestHandler = async(event) =>{
             body: {"error": "Check field"}
         }
       }
-      console.log(response)
     return{
         status:200,
         body: {"success":res}

@@ -13,8 +13,10 @@ import { goto } from "$app/navigation";
   let data: TrainingParam = {
     node: 15,
     size: 0.3,
-    rate: 0.01,
+    rate: 0.1,
     epoch: 100,
+    target: 0.20,
+    limit: 100,
   };
   let fake_size = 30;
   const slider_change = () => {
@@ -47,7 +49,7 @@ import { goto } from "$app/navigation";
   class="modal-toggle"
 />
 <div class="modal">
-  <div class="modal-box w-11/12 max-w-2xl">
+  <div class="modal-box w-11/12 max-w-3xl">
     {#if loading}
       <div
         class="flex flex-col h-full w-full justify-center items-center"
@@ -101,7 +103,7 @@ import { goto } from "$app/navigation";
         </label>
         <label class="input-group w-full mb-5">
           <div class="w-96 flex flex-row justify-between bg-base-300">
-            <span>Learning Rate</span>
+            <span>Learning Rate (Decayed)</span>
             <div
               class="tooltip mx-3 mt-4"
               data-tip="Learning rate to control weights for loss"
@@ -132,6 +134,42 @@ import { goto } from "$app/navigation";
             step="10"
             class="input input-bordered w-full text-right font-inter font-bold"
             bind:value={data.epoch}
+            required
+          />
+        </label>
+        <label class="input-group w-full mb-5">
+          <div class="w-96 flex flex-row justify-between bg-base-300">
+            <span>Training Limit</span>
+            <div
+              class="tooltip mx-3 mt-4"
+              data-tip="Number of epochs or complete passes of the entire training dataset passing through the training or learning process of the algorithm"
+            >
+              <Fa icon={faInfoCircle} />
+            </div>
+          </div>
+          <input
+            type="number"
+            step="10"
+            class="input input-bordered w-full text-right font-inter font-bold"
+            bind:value={data.limit}
+            required
+          />
+        </label>
+        <label class="input-group w-full mb-5">
+          <div class="w-96 flex flex-row justify-between bg-base-300">
+            <span>Target MAE</span>
+            <div
+              class="tooltip mx-3 mt-4"
+              data-tip="Number of epochs or complete passes of the entire training dataset passing through the training or learning process of the algorithm"
+            >
+              <Fa icon={faInfoCircle} />
+            </div>
+          </div>
+          <input
+            type="number"
+            step="0.1"
+            class="input input-bordered w-full text-right font-inter font-bold"
+            bind:value={data.target}
             required
           />
         </label>

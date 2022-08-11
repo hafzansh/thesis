@@ -24,6 +24,11 @@ class ServicesBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
     def get(self, db: Session, id: Any) -> Optional[ModelType]:
         return db.query(self.model).filter(self.model.id == id).first()
 
+    def get_iklims(self, db: Session, tahun: Any, stasiun: Any) -> Optional[ModelType]:
+        return db.query(self.model).filter(self.model.tahun == tahun,self.model.stasiun == stasiun).first()
+
+    def get_padis(self, db: Session, tahun: Any, kota: Any) -> Optional[ModelType]:
+        return db.query(self.model).filter(self.model.tahun == tahun,self.model.kota == kota).first()        
     def get_multi(
         self, db: Session, *, skip: int = 0, limit: int = 100
     ) -> List[ModelType]:

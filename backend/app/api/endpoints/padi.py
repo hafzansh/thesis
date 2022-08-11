@@ -89,10 +89,21 @@ def add_data_padi(
     current_user: User = Depends(deps.get_current_active_superuser),
 ) -> Any:
     """
-    Delete an item.
+    post an item.
     """
-    item = padi.post_data_padi(db=db, obj_in=padi_in)
-    return item
+    exist = padi.get_padis(db=db,tahun=padi_in.tahun,kota=padi_in.kota)
+    if exist:
+        return HTTPException(
+            status_code=403,detail="Exist"
+        )
+    try: 
+        item = padi.post_data_padi(db=db, obj_in=padi_in)
+        return item
+    except:
+        return HTTPException(
+            status_code=403,detail="Exist"
+        )
+    
 
 @router.put("/id/{id}", response_model=Padi)
 def update_data_padi(

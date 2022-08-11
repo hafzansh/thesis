@@ -79,8 +79,19 @@ def add_data_Iklim(
     """
     Delete an item.
     """
-    item = iklim.post_data_iklim(db=db,obj_in=Iklim_in)
-    return item
+
+    exist = iklim.get_iklims(db=db,tahun=Iklim_in.tahun,stasiun=Iklim_in.stasiun)
+    if exist:
+        return HTTPException(
+            status_code=403,detail="Exist"
+        )
+    try: 
+        item = iklim.post_data_iklim(db=db,obj_in=Iklim_in)
+        return item
+    except:
+        return HTTPException(
+            status_code=403,detail="Exist"
+        )
 
 @router.put("/id/{id}", response_model=Iklim)
 def update_data_Iklim(
