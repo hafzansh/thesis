@@ -1,0 +1,640 @@
+<head>
+    <style>
+      .styled-table {
+        border-collapse: collapse;      
+        margin: 25px 0px 25px 55px;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        width: 95%;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+      }
+      .styled-table thead tr {
+        background-color: #eaeaf2;
+        color: black;
+        text-align: left;
+      }
+      .styled-table th,
+      .styled-table td {
+        padding: 12px 15px;
+      }
+      .styled-table tbody tr {
+        border-bottom: 1px solid #dddddd;
+      }
+  
+      .styled-table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+      }
+  
+      .styled-table tbody tr:last-of-type {
+        border-bottom: 2px solid #eaeaf2;
+      }
+      h3 {
+          color:#262626;
+        text-align: center;
+      }
+      img {
+        max-width: 1300px;
+      }
+      .container {
+        display: flex;
+        flex-direction: row;
+        margin-left: 25px;
+        width: 100%;
+        justify-content: space-between;
+      }
+      .title{
+          margin-left: 550px;
+          margin-bottom: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="../../static/assets/logo.png" alt="logo" />
+      <img src="../../static/assets/title.png" class="title" alt="logo" />
+    </div>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>MAE</th>
+          <th>Path</th>
+          <th>Node</th>
+          <th>Learning Rate</th>
+          <th>Epoch</th>
+          <th>Test Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0.25</td>
+          <td>assets/43a59dd1d45a441e87be7a23a2a4521b</td>
+          <td>40</td>
+          
+          <td>0.00500000</td>
+          <td>500</td>
+          <td>0.3</td>        
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <img src="figure.png" alt="figure" />
+    </div>
+    <h3>Training/Test Detail</h3>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Kota</th>
+          <th>Tahun</th>
+          <th>Test Data</th>
+          <th>Preddiction</th>
+          <th>MAE</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td>1</td>
+          
+          <td>Banjar</td>
+          
+          <td>2011</td>
+          
+          <td>0.2416771767</td>
+          
+          <td>0.0794364214</td>
+          
+          <td>0.1605567991</td>
+          
+        </tr>
+        
+        <tr>
+          <td>2</td>
+          
+          <td>Tanah Laut</td>
+          
+          <td>2012</td>
+          
+          <td>-0.7584628194</td>
+          
+          <td>-0.6757290363</td>
+          
+          <td>-0.7170959279</td>
+          
+        </tr>
+        
+        <tr>
+          <td>3</td>
+          
+          <td>Kotabaru</td>
+          
+          <td>2015</td>
+          
+          <td>-0.8698438254</td>
+          
+          <td>-0.8079967499</td>
+          
+          <td>-0.8389202876</td>
+          
+        </tr>
+        
+        <tr>
+          <td>4</td>
+          
+          <td>Banjar</td>
+          
+          <td>2014</td>
+          
+          <td>0.946776419</td>
+          
+          <td>1.8856753111</td>
+          
+          <td>1.416225865</td>
+          
+        </tr>
+        
+        <tr>
+          <td>5</td>
+          
+          <td>Tabalong</td>
+          
+          <td>2017</td>
+          
+          <td>-0.4001211878</td>
+          
+          <td>-0.4501841068</td>
+          
+          <td>-0.4251526473</td>
+          
+        </tr>
+        
+        <tr>
+          <td>6</td>
+          
+          <td>Tapin</td>
+          
+          <td>2013</td>
+          
+          <td>1.1446263448</td>
+          
+          <td>0.8212218881</td>
+          
+          <td>0.9829241164</td>
+          
+        </tr>
+        
+        <tr>
+          <td>7</td>
+          
+          <td>Hulu Sungai Tengah</td>
+          
+          <td>2014</td>
+          
+          <td>0.5331902047</td>
+          
+          <td>0.1487924308</td>
+          
+          <td>0.3409913177</td>
+          
+        </tr>
+        
+        <tr>
+          <td>8</td>
+          
+          <td>Tapin</td>
+          
+          <td>2014</td>
+          
+          <td>1.1797351441</td>
+          
+          <td>0.659409523</td>
+          
+          <td>0.9195723336</td>
+          
+        </tr>
+        
+        <tr>
+          <td>9</td>
+          
+          <td>Hulu Sungai Utara</td>
+          
+          <td>2015</td>
+          
+          <td>-0.235576561</td>
+          
+          <td>-0.0913865119</td>
+          
+          <td>-0.1634815365</td>
+          
+        </tr>
+        
+        <tr>
+          <td>10</td>
+          
+          <td>Kota Banjarbaru</td>
+          
+          <td>2017</td>
+          
+          <td>-1.6018370223</td>
+          
+          <td>-1.5968550444</td>
+          
+          <td>-1.5993460333</td>
+          
+        </tr>
+        
+        <tr>
+          <td>11</td>
+          
+          <td>Hulu Sungai Utara</td>
+          
+          <td>2011</td>
+          
+          <td>-0.673163202</td>
+          
+          <td>-0.6460841298</td>
+          
+          <td>-0.6596236659</td>
+          
+        </tr>
+        
+        <tr>
+          <td>12</td>
+          
+          <td>Tanah Laut</td>
+          
+          <td>2013</td>
+          
+          <td>0.0008008872</td>
+          
+          <td>0.0361789279</td>
+          
+          <td>0.0184899075</td>
+          
+        </tr>
+        
+        <tr>
+          <td>13</td>
+          
+          <td>Hulu Sungai Utara</td>
+          
+          <td>2013</td>
+          
+          <td>-1.1348890005</td>
+          
+          <td>-0.9013911486</td>
+          
+          <td>-1.0181400745</td>
+          
+        </tr>
+        
+        <tr>
+          <td>14</td>
+          
+          <td>Barito Kuala</td>
+          
+          <td>2016</td>
+          
+          <td>1.6444337453</td>
+          
+          <td>1.938842535</td>
+          
+          <td>1.7916381401</td>
+          
+        </tr>
+        
+        <tr>
+          <td>15</td>
+          
+          <td>Tabalong</td>
+          
+          <td>2011</td>
+          
+          <td>-0.9876956319</td>
+          
+          <td>-0.706184864</td>
+          
+          <td>-0.846940248</td>
+          
+        </tr>
+        
+        <tr>
+          <td>16</td>
+          
+          <td>Barito Kuala</td>
+          
+          <td>2012</td>
+          
+          <td>1.1922407339</td>
+          
+          <td>0.9999462962</td>
+          
+          <td>1.0960935151</td>
+          
+        </tr>
+        
+        <tr>
+          <td>17</td>
+          
+          <td>Kota Banjarmasin</td>
+          
+          <td>2012</td>
+          
+          <td>-1.5743881445</td>
+          
+          <td>-1.3712846041</td>
+          
+          <td>-1.4728363743</td>
+          
+        </tr>
+        
+        <tr>
+          <td>18</td>
+          
+          <td>Kotabaru</td>
+          
+          <td>2017</td>
+          
+          <td>-0.605571579</td>
+          
+          <td>0.1526198387</td>
+          
+          <td>-0.2264758701</td>
+          
+        </tr>
+        
+        <tr>
+          <td>19</td>
+          
+          <td>Kotabaru</td>
+          
+          <td>2016</td>
+          
+          <td>-0.7674109554</td>
+          
+          <td>-0.3010186553</td>
+          
+          <td>-0.5342148053</td>
+          
+        </tr>
+        
+        <tr>
+          <td>20</td>
+          
+          <td>Barito Kuala</td>
+          
+          <td>2014</td>
+          
+          <td>1.6877474799</td>
+          
+          <td>1.4205454588</td>
+          
+          <td>1.5541464693</td>
+          
+        </tr>
+        
+        <tr>
+          <td>21</td>
+          
+          <td>Tanah Bumbu</td>
+          
+          <td>2012</td>
+          
+          <td>-0.9271594605</td>
+          
+          <td>-0.8499076366</td>
+          
+          <td>-0.8885335486</td>
+          
+        </tr>
+        
+        <tr>
+          <td>22</td>
+          
+          <td>Hulu Sungai Tengah</td>
+          
+          <td>2011</td>
+          
+          <td>-0.228917483</td>
+          
+          <td>-0.3475891054</td>
+          
+          <td>-0.2882532942</td>
+          
+        </tr>
+        
+        <tr>
+          <td>23</td>
+          
+          <td>Balangan</td>
+          
+          <td>2015</td>
+          
+          <td>-0.1096981874</td>
+          
+          <td>-0.2093145698</td>
+          
+          <td>-0.1595063786</td>
+          
+        </tr>
+        
+        <tr>
+          <td>24</td>
+          
+          <td>Tanah Bumbu</td>
+          
+          <td>2014</td>
+          
+          <td>-0.6838652915</td>
+          
+          <td>-0.6318705678</td>
+          
+          <td>-0.6578679297</td>
+          
+        </tr>
+        
+        <tr>
+          <td>25</td>
+          
+          <td>Hulu Sungai Tengah</td>
+          
+          <td>2016</td>
+          
+          <td>1.1714905714</td>
+          
+          <td>0.7014209032</td>
+          
+          <td>0.9364557373</td>
+          
+        </tr>
+        
+        <tr>
+          <td>26</td>
+          
+          <td>Barito Kuala</td>
+          
+          <td>2015</td>
+          
+          <td>1.7043852654</td>
+          
+          <td>1.4941314459</td>
+          
+          <td>1.5992583556</td>
+          
+        </tr>
+        
+        <tr>
+          <td>27</td>
+          
+          <td>Tanah Bumbu</td>
+          
+          <td>2016</td>
+          
+          <td>-0.7009688161</td>
+          
+          <td>-0.8779557943</td>
+          
+          <td>-0.7894623052</td>
+          
+        </tr>
+        
+        <tr>
+          <td>28</td>
+          
+          <td>Banjar</td>
+          
+          <td>2017</td>
+          
+          <td>0.8124651952</td>
+          
+          <td>1.2138341665</td>
+          
+          <td>1.0131496809</td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    <h3>Loss Detail</h3>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Epoch</th>
+          <th>Training Loss</th>
+          <th>Validation Loss</th>        
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td>Epochs 1</td>
+          
+          <td>0.6709452868</td>
+          
+          <td>0.5152265429</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 2</td>
+          
+          <td>0.4292948842</td>
+          
+          <td>0.4014656842</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 3</td>
+          
+          <td>0.3227837384</td>
+          
+          <td>0.3790200651</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 4</td>
+          
+          <td>0.302303493</td>
+          
+          <td>0.369897604</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 5</td>
+          
+          <td>0.2814825177</td>
+          
+          <td>0.3270277381</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 6</td>
+          
+          <td>0.2205107212</td>
+          
+          <td>0.3103208542</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 7</td>
+          
+          <td>0.1561074108</td>
+          
+          <td>0.3041828275</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 8</td>
+          
+          <td>0.174250856</td>
+          
+          <td>0.30423522</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 9</td>
+          
+          <td>0.1807612181</td>
+          
+          <td>0.2898658812</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 10</td>
+          
+          <td>0.1567510813</td>
+          
+          <td>0.2791401744</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 11</td>
+          
+          <td>0.1331326962</td>
+          
+          <td>0.2670125663</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 12</td>
+          
+          <td>0.1183673888</td>
+          
+          <td>0.2513698637</td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+  </body>
+  

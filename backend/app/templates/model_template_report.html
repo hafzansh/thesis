@@ -1,0 +1,126 @@
+<head>
+    <style>
+      .styled-table {
+        border-collapse: collapse;      
+        margin: 25px 0px 25px 55px;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        width: 95%;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+      }
+      .styled-table thead tr {
+        background-color: #eaeaf2;
+        color: black;
+        text-align: left;
+      }
+      .styled-table th,
+      .styled-table td {
+        padding: 12px 15px;
+      }
+      .styled-table tbody tr {
+        border-bottom: 1px solid #dddddd;
+      }
+  
+      .styled-table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+      }
+  
+      .styled-table tbody tr:last-of-type {
+        border-bottom: 2px solid #eaeaf2;
+      }
+      h3 {
+          color:#262626;
+        text-align: center;
+      }
+      img {
+        max-width: 1300px;
+      }
+      .container {
+        display: flex;
+        flex-direction: row;
+        margin-left: 25px;
+        width: 100%;
+        justify-content: space-between;
+      }
+      .title{
+          margin-left: 550px;
+          margin-bottom: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="../../static/assets/logo.png" alt="logo" />
+      <img src="../../static/assets/title.png" class="title" alt="logo" />
+    </div>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>MAE</th>
+          <th>Path</th>
+          <th>Node</th>
+          <th>Learning Rate</th>
+          <th>Epoch</th>
+          <th>Test Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{param.mae}}</td>
+          <td>{{param.path}}</td>
+          <td>{{param.node}}</td>
+          
+          <td>{{rate}}</td>
+          <td>{{stop}}/{{param.epoch}}</td>
+          <td>{{param.size}}</td>        
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <img src="figure.png" alt="figure" />
+    </div>
+    <h3>Training/Test Detail</h3>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Kota</th>
+          <th>Tahun</th>
+          <th>Test Data</th>
+          <th>Preddiction</th>
+          <th>MAE</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for idx, row in df.iterrows() %}
+        <tr>
+          <td>{{idx+1}}</td>
+          {% for colname in df.columns %}
+          <td>{{ row[colname]}}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <h3>Loss Detail</h3>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Epoch</th>
+          <th>Training Loss</th>
+          <th>Validation Loss</th>        
+        </tr>
+      </thead>
+      <tbody>
+        {% for idx, row in loss.iterrows() %}
+        <tr>
+          <td>Epochs {{idx+1}}</td>
+          {% for colname in loss.columns %}
+          <td>{{ row[colname]}}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+  

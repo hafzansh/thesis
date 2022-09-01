@@ -158,7 +158,8 @@ def train_model(
         "size": ml_model.size,
         "rate": ml_model.rate,
         "loss": ml_model.history,
-        "result":  trained['data']
+        "result":  trained['data'],   
+        "drive_id": "None"     
     })
     if not trained:
         raise HTTPException(status_code=500, detail="Something went wrong")

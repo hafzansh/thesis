@@ -1,0 +1,1432 @@
+<head>
+    <style>
+      .styled-table {
+        border-collapse: collapse;      
+        margin: 25px 0px 25px 55px;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        width: 95%;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+      }
+      .styled-table thead tr {
+        background-color: #eaeaf2;
+        color: black;
+        text-align: left;
+      }
+      .styled-table th,
+      .styled-table td {
+        padding: 12px 15px;
+      }
+      .styled-table tbody tr {
+        border-bottom: 1px solid #dddddd;
+      }
+  
+      .styled-table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+      }
+  
+      .styled-table tbody tr:last-of-type {
+        border-bottom: 2px solid #eaeaf2;
+      }
+      h3 {
+          color:#262626;
+        text-align: center;
+      }
+      img {
+        max-width: 1300px;
+      }
+      .container {
+        display: flex;
+        flex-direction: row;
+        margin-left: 25px;
+        width: 100%;
+        justify-content: space-between;
+      }
+      .title{
+          margin-left: 550px;
+          margin-bottom: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="../../static/assets/logo.png" alt="logo" />
+      <img src="../../static/assets/title.png" class="title" alt="logo" />
+    </div>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>MAE</th>
+          <th>Path</th>
+          <th>Node</th>
+          <th>Learning Rate</th>
+          <th>Epoch</th>
+          <th>Test Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1.12</td>
+          <td>assets/8db6a36615c748a3968f6e89e97b27db</td>
+          <td>18</td>
+          
+          <td>0.00000000</td>
+          <td>100/100</td>
+          <td>0.3</td>        
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <img src="figure.png" alt="figure" />
+    </div>
+    <h3>Training/Test Detail</h3>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Kota</th>
+          <th>Tahun</th>
+          <th>Test Data</th>
+          <th>Preddiction</th>
+          <th>MAE</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td>1</td>
+          
+          <td>Banjar</td>
+          
+          <td>2011</td>
+          
+          <td>0.2416771767</td>
+          
+          <td>1.7983074188</td>
+          
+          <td>1.0199922978</td>
+          
+        </tr>
+        
+        <tr>
+          <td>2</td>
+          
+          <td>Tanah Laut</td>
+          
+          <td>2012</td>
+          
+          <td>-0.7584628194</td>
+          
+          <td>0.0197543483</td>
+          
+          <td>-0.3693542355</td>
+          
+        </tr>
+        
+        <tr>
+          <td>3</td>
+          
+          <td>Kotabaru</td>
+          
+          <td>2015</td>
+          
+          <td>-0.8698438254</td>
+          
+          <td>0.8780730367</td>
+          
+          <td>0.0041146056</td>
+          
+        </tr>
+        
+        <tr>
+          <td>4</td>
+          
+          <td>Banjar</td>
+          
+          <td>2014</td>
+          
+          <td>0.946776419</td>
+          
+          <td>-0.1919269264</td>
+          
+          <td>0.3774247463</td>
+          
+        </tr>
+        
+        <tr>
+          <td>5</td>
+          
+          <td>Tabalong</td>
+          
+          <td>2017</td>
+          
+          <td>-0.4001211878</td>
+          
+          <td>-0.4529201388</td>
+          
+          <td>-0.4265206633</td>
+          
+        </tr>
+        
+        <tr>
+          <td>6</td>
+          
+          <td>Tapin</td>
+          
+          <td>2013</td>
+          
+          <td>1.1446263448</td>
+          
+          <td>0.6157544851</td>
+          
+          <td>0.880190415</td>
+          
+        </tr>
+        
+        <tr>
+          <td>7</td>
+          
+          <td>Hulu Sungai Tengah</td>
+          
+          <td>2014</td>
+          
+          <td>0.5331902047</td>
+          
+          <td>-0.1795449853</td>
+          
+          <td>0.1768226097</td>
+          
+        </tr>
+        
+        <tr>
+          <td>8</td>
+          
+          <td>Tapin</td>
+          
+          <td>2014</td>
+          
+          <td>1.1797351441</td>
+          
+          <td>-0.3713983893</td>
+          
+          <td>0.4041683774</td>
+          
+        </tr>
+        
+        <tr>
+          <td>9</td>
+          
+          <td>Hulu Sungai Utara</td>
+          
+          <td>2015</td>
+          
+          <td>-0.235576561</td>
+          
+          <td>0.4697578251</td>
+          
+          <td>0.1170906321</td>
+          
+        </tr>
+        
+        <tr>
+          <td>10</td>
+          
+          <td>Kota Banjarbaru</td>
+          
+          <td>2017</td>
+          
+          <td>-1.6018370223</td>
+          
+          <td>-0.3422181606</td>
+          
+          <td>-0.9720275915</td>
+          
+        </tr>
+        
+        <tr>
+          <td>11</td>
+          
+          <td>Hulu Sungai Utara</td>
+          
+          <td>2011</td>
+          
+          <td>-0.673163202</td>
+          
+          <td>1.0132572651</td>
+          
+          <td>0.1700470316</td>
+          
+        </tr>
+        
+        <tr>
+          <td>12</td>
+          
+          <td>Tanah Laut</td>
+          
+          <td>2013</td>
+          
+          <td>0.0008008872</td>
+          
+          <td>0.6940523982</td>
+          
+          <td>0.3474266427</td>
+          
+        </tr>
+        
+        <tr>
+          <td>13</td>
+          
+          <td>Hulu Sungai Utara</td>
+          
+          <td>2013</td>
+          
+          <td>-1.1348890005</td>
+          
+          <td>0.2491005659</td>
+          
+          <td>-0.4428942173</td>
+          
+        </tr>
+        
+        <tr>
+          <td>14</td>
+          
+          <td>Barito Kuala</td>
+          
+          <td>2016</td>
+          
+          <td>1.6444337453</td>
+          
+          <td>-0.6293061972</td>
+          
+          <td>0.5075637741</td>
+          
+        </tr>
+        
+        <tr>
+          <td>15</td>
+          
+          <td>Tabalong</td>
+          
+          <td>2011</td>
+          
+          <td>-0.9876956319</td>
+          
+          <td>0.8169149756</td>
+          
+          <td>-0.0853903281</td>
+          
+        </tr>
+        
+        <tr>
+          <td>16</td>
+          
+          <td>Barito Kuala</td>
+          
+          <td>2012</td>
+          
+          <td>1.1922407339</td>
+          
+          <td>-0.3659353852</td>
+          
+          <td>0.4131526743</td>
+          
+        </tr>
+        
+        <tr>
+          <td>17</td>
+          
+          <td>Kota Banjarmasin</td>
+          
+          <td>2012</td>
+          
+          <td>-1.5743881445</td>
+          
+          <td>-0.6410992146</td>
+          
+          <td>-1.1077436795</td>
+          
+        </tr>
+        
+        <tr>
+          <td>18</td>
+          
+          <td>Kotabaru</td>
+          
+          <td>2017</td>
+          
+          <td>-0.605571579</td>
+          
+          <td>-0.852565527</td>
+          
+          <td>-0.729068553</td>
+          
+        </tr>
+        
+        <tr>
+          <td>19</td>
+          
+          <td>Kotabaru</td>
+          
+          <td>2016</td>
+          
+          <td>-0.7674109554</td>
+          
+          <td>-0.1139179617</td>
+          
+          <td>-0.4406644585</td>
+          
+        </tr>
+        
+        <tr>
+          <td>20</td>
+          
+          <td>Barito Kuala</td>
+          
+          <td>2014</td>
+          
+          <td>1.6877474799</td>
+          
+          <td>-0.716642797</td>
+          
+          <td>0.4855523415</td>
+          
+        </tr>
+        
+        <tr>
+          <td>21</td>
+          
+          <td>Tanah Bumbu</td>
+          
+          <td>2012</td>
+          
+          <td>-0.9271594605</td>
+          
+          <td>-0.3502611816</td>
+          
+          <td>-0.6387103211</td>
+          
+        </tr>
+        
+        <tr>
+          <td>22</td>
+          
+          <td>Hulu Sungai Tengah</td>
+          
+          <td>2011</td>
+          
+          <td>-0.228917483</td>
+          
+          <td>1.4078761339</td>
+          
+          <td>0.5894793254</td>
+          
+        </tr>
+        
+        <tr>
+          <td>23</td>
+          
+          <td>Balangan</td>
+          
+          <td>2015</td>
+          
+          <td>-0.1096981874</td>
+          
+          <td>0.0332769006</td>
+          
+          <td>-0.0382106434</td>
+          
+        </tr>
+        
+        <tr>
+          <td>24</td>
+          
+          <td>Tanah Bumbu</td>
+          
+          <td>2014</td>
+          
+          <td>-0.6838652915</td>
+          
+          <td>-0.3537281752</td>
+          
+          <td>-0.5187967333</td>
+          
+        </tr>
+        
+        <tr>
+          <td>25</td>
+          
+          <td>Hulu Sungai Tengah</td>
+          
+          <td>2016</td>
+          
+          <td>1.1714905714</td>
+          
+          <td>-0.0743400753</td>
+          
+          <td>0.5485752481</td>
+          
+        </tr>
+        
+        <tr>
+          <td>26</td>
+          
+          <td>Barito Kuala</td>
+          
+          <td>2015</td>
+          
+          <td>1.7043852654</td>
+          
+          <td>-0.2622409761</td>
+          
+          <td>0.7210721447</td>
+          
+        </tr>
+        
+        <tr>
+          <td>27</td>
+          
+          <td>Tanah Bumbu</td>
+          
+          <td>2016</td>
+          
+          <td>-0.7009688161</td>
+          
+          <td>-0.2304613143</td>
+          
+          <td>-0.4657150652</td>
+          
+        </tr>
+        
+        <tr>
+          <td>28</td>
+          
+          <td>Banjar</td>
+          
+          <td>2017</td>
+          
+          <td>0.8124651952</td>
+          
+          <td>-0.5502836108</td>
+          
+          <td>0.1310907922</td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    <h3>Loss Detail</h3>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Epoch</th>
+          <th>Training Loss</th>
+          <th>Validation Loss</th>        
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td>Epochs 1</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 2</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 3</td>
+          
+          <td>0.9497333765</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 4</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 5</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 6</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 7</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 8</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 9</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 10</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 11</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 12</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 13</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 14</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 15</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 16</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 17</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 18</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 19</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 20</td>
+          
+          <td>0.9497333765</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 21</td>
+          
+          <td>0.9497333765</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 22</td>
+          
+          <td>0.9497333765</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 23</td>
+          
+          <td>0.9497333765</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 24</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 25</td>
+          
+          <td>0.9497333765</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 26</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 27</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 28</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 29</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 30</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 31</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 32</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 33</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 34</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 35</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 36</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 37</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 38</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 39</td>
+          
+          <td>0.9497333765</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 40</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 41</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 42</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 43</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 44</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 45</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 46</td>
+          
+          <td>0.9497333169</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 47</td>
+          
+          <td>0.9497333765</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 48</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 49</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 50</td>
+          
+          <td>0.9497333765</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 51</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 52</td>
+          
+          <td>0.9497333765</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 53</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 54</td>
+          
+          <td>0.9497333765</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 55</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 56</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 57</td>
+          
+          <td>0.9497333765</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 58</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 59</td>
+          
+          <td>0.9497333765</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 60</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 61</td>
+          
+          <td>0.9497333765</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 62</td>
+          
+          <td>0.9497333765</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 63</td>
+          
+          <td>0.9497333765</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 64</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 65</td>
+          
+          <td>0.9497333765</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 66</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 67</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 68</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 69</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 70</td>
+          
+          <td>0.9497333765</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 71</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 72</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 73</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 74</td>
+          
+          <td>0.9497333765</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 75</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 76</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 77</td>
+          
+          <td>0.9497333765</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 78</td>
+          
+          <td>0.9497333765</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 79</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 80</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 81</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 82</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 83</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 84</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 85</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 86</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 87</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 88</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 89</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 90</td>
+          
+          <td>0.9497333765</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 91</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 92</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 93</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 94</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 95</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 96</td>
+          
+          <td>0.9497333765</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 97</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 98</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 99</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+        <tr>
+          <td>Epochs 100</td>
+          
+          <td>0.9497334361</td>
+          
+          <td>1.1215298176</td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+  </body>
+  

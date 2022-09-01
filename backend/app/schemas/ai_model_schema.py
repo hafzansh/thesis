@@ -13,6 +13,7 @@ class AI_ModelBase(BaseModel):
     rate:float
     loss: Json
     result: Json
+    drive_id:str
 
 # Properties to receive on AI_Model creation
 class AI_ModelCreate(AI_ModelBase):

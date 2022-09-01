@@ -16,3 +16,4 @@ class AI_Model(Base):
     rate = Column(Float)
     loss = Column(JSON)
     result = Column(JSON)
+    drive_id = Column(String)
