@@ -14,11 +14,11 @@ VERSION = 'v1'
 SCOPES = ['https://www.googleapis.com/auth/gmail.send']
 class GMail():
     service = Create_Service(CLIENT,API,VERSION,SCOPES)
-    def create_template(self,param):
+    def create_template(self,param,templates):
         id = uuid.uuid4().hex
         templateLoader = jinja2.FileSystemLoader(searchpath="app/templates/")
         templateEnv = jinja2.Environment(loader=templateLoader)
-        TEMPLATE_FILE = "email_template.html"
+        TEMPLATE_FILE = templates
         template = templateEnv.get_template(TEMPLATE_FILE)
         outputText = template.render(body=param)
         html_file = open(f'temp/{id}.html', 'w')
@@ -26,19 +26,19 @@ class GMail():
         html_file.close()
         return id
 
-    def send_email(self,param):
+    def send_email(self,param,templates):
         message = EmailMessage()
         
         body = """
             <b>Test</b> 
         """
-        id = self.create_template(param)
+        id = self.create_template(param,templates)
         with open(f'temp/{id}.html','r') as f:
             body = f.read()
         # message.set_content(body)            
-        message['To'] = 'muhammadhafiez86@gmail.com'
+        message['To'] = param['email']
         message['From'] = 'jst.padikalsel@gmail.com'
-        message['Subject'] = 'Model Data - JST.Padi'
+        message['Subject'] = param['title']
         message.add_header('Content-Type','text/html')
         message.set_payload(body)
         # message.add_header('Content-Transfer-Encoding','quoted=printable')

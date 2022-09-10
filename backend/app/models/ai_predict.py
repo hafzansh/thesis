@@ -10,3 +10,4 @@ class AI_Predict(Base):
     created_on = Column(String)
     path = Column(String)
     data = Column(JSON)
+    drive_id=Column(String)

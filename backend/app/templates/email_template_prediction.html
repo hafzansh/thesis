@@ -51,31 +51,23 @@
         
       </div>      
       <p style="margin-bottom: 30px;text-justify: auto;text-align: justify;line-height: 2;">
-        Berikut ini kami lampirkan mengenai model yang kami buat untuk memprediksi hasil produksi padi di Kalimantan Selatan dengan parameter dibawah ini yang menghasilkan nilai <b>Mean Absolute Error (MAE)</b> sebesar <b>{{body.mae}}</b>
+        Berikut ini kami lampirkan hasil prediksi produksi padi yang kami buat berdasarkan model yang kami pilih yaitu : 
       </p>
       <table class="styled-table">
         <thead>
           <tr>
-            <th>Parameter</th>
+            <th>Detail</th>
             <th>Value</th>            
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Epoch</td>
-            <td>{{body.epoch}}</td>
+            <td>Model ID</td>
+            <td>{{body.path}}</td>
           </tr>
           <tr>
-            <td>Node</td>
-            <td>{{body.node}}</td>
-          </tr>
-          <tr>
-            <td>Learning Rate</td>
-            <td>{{body.rate}}</td>
-          </tr>
-          <tr>
-            <td>Test Size</td>
-            <td>{{body.size}}</td>
+            <td>Dibuat Pada</td>
+            <td>{{body.created_on}}</td>
           </tr>          
         </tbody>
       </table>      

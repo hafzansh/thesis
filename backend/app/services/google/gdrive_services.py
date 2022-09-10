@@ -30,5 +30,6 @@ class UploadDrive():
             body=file_metadata,
             media_body=media,
             fields='id'
-        ).execute()        
+        ).execute()
+        return file.get("id")        
 gdrive_service = UploadDrive()

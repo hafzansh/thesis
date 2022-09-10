@@ -14,6 +14,7 @@ class AI_TrainingBase(BaseModel):
 class AI_PredictsBase(BaseModel):
     path: str
     data: object
+    drive_id:str
     
 
 # Properties to receive on AI_Predicts creation

@@ -3,69 +3,88 @@ from datetime import datetime
 from typing import Any
 from fastapi import APIRouter, Depends, HTTPException, Response
 from sqlalchemy.orm import Session
-from app.services.machine_learn.ml_training import ml_model
 from app.services.machine_learn.ml_services import ai_model, ai_pred
-from app.services.machine_learn.ml_predict import predict_model
 from app.services.data.padi import *
 from app.services.mail.mail_services import mail_services
-from app.models.user import User
 from app.api import deps
+from app.models.user import User
 from app.models.ai_model import *
 from app.models.ai_predict import *
 from app.schemas.ai_model_schema import *
 from app.schemas.ai_predict_schema import *
 from app.schemas.ai_predicts_schema import *
-from app.services.google.gdrive_services import gdrive_service
-from fastapi import BackgroundTasks
-from app.services.mail.service import send_email_async, send_email_background
 from app.services.google.gmail_services import gmail_service
+from app.models.email_model import EmailRes
+from app.services.mail.predict_mail_services import predict_mail_services
+import uuid
 router = APIRouter()
-@router.get('/create_report')
-def create_report(
+
+
+@router.post('/send_model')
+def sending_model_through_email(
     *,
     db: Session = Depends(deps.get_db),
-    id: int,
+    payload: EmailRes,
+    current_user: User = Depends(deps.get_current_active_user),
 ) -> Any:
-    response = ai_model.get(db=db, id=id)
+    response = ai_model.get(db=db, id=payload.id)
     if not response:
         raise HTTPException(status_code=404, detail="Model not found")
     if response.drive_id == "None":
-        data = mail_services.create_file(response)  
+        data = mail_services.create_file(response)
         updated = {
-        "mae": response.mae,
-        "path": response.path,
-        "node": response.node,
-        "rate": response.rate,
-        "result": response.result,
-        "id": response.id,
-        "epoch": response.epoch,
-        "size": response.size,
-        "loss": response.loss,
-        "drive_id": data
-        }      
-        ai_model.update(db=db,db_obj=response,obj_in=updated)
+            "mae": response.mae,
+            "path": response.path,
+            "node": response.node,
+            "rate": response.rate,
+            "result": response.result,
+            "id": response.id,
+            "epoch": response.epoch,
+            "size": response.size,
+            "loss": response.loss,
+            "drive_id": data
+        }
+        ai_model.update(db=db, db_obj=response, obj_in=updated)
     param = {
-            "title": "Model Data",
-            "name": "JST Padi",
-            "link": f"https://drive.google.com/drive/folders/{response.drive_id}"
+        "loss": len(response.loss),
+        "node": response.node,
+        "rate": "{:.8f}".format(float(response.rate)),
+        "size": response.size,
+        "epoch": response.epoch,
+        "email": payload.email,
+        "mae": response.mae,
+        "link": f"https://drive.google.com/drive/folders/{response.drive_id}",
+        "title":'Model Data - JST.Padi'
+    }
+    gmail_service.send_email(param,"email_template.html")
+    return {"link": f"https://drive.google.com/drive/folders/{response.drive_id}"}
+@router.post('/send_prediction')
+def sending_predicting_through_email(
+    *,
+    db: Session = Depends(deps.get_db),
+    payload: EmailRes,
+    current_user: User = Depends(deps.get_current_active_user),
+
+) -> Any:
+    response = ai_pred.get(db=db, id=payload.id)
+    if not response:
+        raise HTTPException(status_code=404, detail="Prediction not found")
+    if response.drive_id == "None":
+        data = predict_mail_services.create_figure(response,uuid.uuid4().hex)
+        updated = {
+            "id": response.id,
+            "created_on": response.created_on,
+            "path": response.path,
+            "data": response.data,            
+            "drive_id": data
         }
-    gmail_service.send_email(param)        
-    return response.drive_id
-@router.get('/send-email/asynchronous')
-async def send_email_asynchronous():
-    body = {
-        "title": "Hello World",
-        "name": "John Doe"
-        }
-    await send_email_async('Hello World','muhammadhafiez86@gmail.com',body
-    )
-    return {"detail":"success"}
-@router.get('/send-email/backgroundtasks')
-def send_email_backgroundtasks(background_tasks: BackgroundTasks):
-    send_email_background(background_tasks, 'Hello World',   
-    'muhammadhafiez86@gmail.com', {'title': 'Hello World', 'name' :'John Doe'})
-    return 'Success'    
-@router.get('/send-email/gmail-api')
-def send_email_asynchronous():
-    gmail_service.send_email()
-    return 'Success'        
+        ai_pred.update(db=db, db_obj=response, obj_in=updated)
+    param = {      
+        "path": response.path[7:],
+        "created_on": response.created_on,  
+        "link": f"https://drive.google.com/file/d/{response.drive_id}",
+        "email": payload.email,
+        "title":'Hasil Prediksi - JST.Padi'
+    }        
+    gmail_service.send_email(param,"email_template_prediction.html")
+    return {"link": f"https://drive.google.com/file/d/{response.drive_id}"}

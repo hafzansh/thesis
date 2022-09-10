@@ -1,0 +1,82 @@
+<head>
+    <style>
+      .styled-table {
+        border-collapse: collapse;      
+        margin: 25px 0px 25px 55px;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        width: 95%;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+      }
+      .styled-table thead tr {
+        background-color: #eaeaf2;
+        color: black;
+        text-align: left;
+      }
+      .styled-table th,
+      .styled-table td {
+        padding: 12px 15px;
+      }
+      .styled-table tbody tr {
+        border-bottom: 1px solid #dddddd;
+      }
+  
+      .styled-table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+      }
+  
+      .styled-table tbody tr:last-of-type {
+        border-bottom: 2px solid #eaeaf2;
+      }
+      h3 {
+          color:#262626;
+        text-align: center;
+      }
+      img {
+        max-width: 1300px;
+      }
+      .container {
+        display: flex;
+        flex-direction: row;
+        margin-left: 25px;
+        width: 100%;
+        justify-content: space-between;
+      }
+      .title{
+          margin-left: 520px;
+          margin-bottom: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="../../static/assets/logo.png" alt="logo" />
+      <img src="../../static/assets/title2.png" class="title" alt="logo" />
+    </div>    
+    <h3>Bar Plot Prediksi</h3>
+    <div>
+      <img src="predict.png" alt="figure" />
+    </div>
+    <h3>Hasil Prediksi</h3>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Kota</th>
+          <th>Tahun</th>
+          <th>Hasil Prediksi</th>          
+        </tr>
+      </thead>
+      <tbody>
+        {% for idx, row in body.iterrows() %}
+        <tr>
+          <td>{{idx+1}}</td>
+          <td>{{row.kota}}</td>
+          <td>{{row.tahun}}</td>
+          <td>{{row.result}}</td>          
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+  
