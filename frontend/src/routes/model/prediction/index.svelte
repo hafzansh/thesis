@@ -13,6 +13,7 @@
     path: string;
     data: any;
     id: number;
+    drive_id?:string
   };
   export let data: predictions_type[];
 

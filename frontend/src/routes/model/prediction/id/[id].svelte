@@ -1,9 +1,11 @@
 <script context="module">
+  import {fade} from "svelte/transition"
   import { goto } from "$app/navigation";
-  import { page } from "$app/stores";
+  import { page, session } from "$app/stores";
   import {
     faArrowCircleLeft,
     faPrint,
+faShare,
   } from "@fortawesome/free-solid-svg-icons";
   import { Bar } from "svelte-chartjs";
   import {
@@ -26,7 +28,9 @@
     LinearScale
   );
   import Fa from "svelte-fa";
-  import { city, stasiun } from "../../../../lib/utils/constants";
+  import { baseApi, city, stasiun } from "../../../../lib/utils/constants";
+import { post_data } from "../../../../lib/shared/api";
+import { toast } from "@zerodevx/svelte-toast";
 </script>
 
 <script lang="ts">
@@ -70,6 +74,37 @@
   };
   const path_chart = `${$page.url.pathname}/print_chart`;
   const path_table = `${$page.url.pathname}/print_table`;
+  let form_modal = "1";
+  let target_mail:any
+  function onChange(event: Event) {
+    form_modal = event.currentTarget.value || "1";
+  }
+  const post_email = async (id: any, target: string) => {
+    const res = await post_data(`${baseApi}/mail/send_prediction`, $session.user.auth_token, {
+        id: id,
+        email: target,
+      })
+    return await res.json()
+  };
+  const post_form=(id: any, target: string)=>{
+    toast.push(`Sending Email...`)
+      window.location.href = '#'      
+      let a = post_email(id,target).then(a=>{
+        if (a.link) return toast.push('Email has been sent')
+        return toast.push(a.detail.msg)
+      })      
+  }
+  const submit_mail = () => {
+    if (form_modal == "1") {      
+      post_form(data[0].id,"bps6300@bps.go.id")
+    }
+    else if (form_modal == "2") {      
+      post_form(data[0].id,"dipertakalsel@gmail.com")
+    }
+    else if (form_modal == "3") {      
+      post_form(data[0].id,target_mail)      
+    }
+  };
 </script>
 
 <div
@@ -117,6 +152,114 @@
         </div>
         <div class="stat-description badge badge-outline">Table</div>
       </button>
+      <a
+      href="#send-mail"
+      class="flex flex-col justify-center items-center"
+    >
+      <div class="stat-value text-white mb-1 mt-1 text-[25px]">
+        <Fa icon={faShare} />
+      </div>
+      <div class="stat-description badge badge-outline">Share</div>
+    </a>
+    <!-- <input bind:value={values}
+    bind:checked={values} type="checkbox" id="my-modal" class="modal-toggle" /> -->
+    <div class="modal" id="send-mail">
+      <div class="modal-box max-w-md">
+        <form method="post" on:submit|preventDefault={submit_mail}>
+          <h3 class="font-bold text-lg text-base-content">
+            Kirim hasil model ini kepada :
+          </h3>
+          <div class="flex flex-col gap-4 mt-5">
+            <div class="form-control">
+              <label class="label cursor-pointer">
+                <input
+                  type="radio"
+                  name="radio-6"
+                  class="radio {form_modal === '1'
+                    ? 'radio-primary'
+                    : ''}"
+                  value="1"
+                  on:change={onChange}
+                  bind:group={form_modal}
+                  checked={form_modal == "1"}
+                />
+                <span
+                  class="label-text btn {form_modal === '1'
+                    ? 'btn-primary'
+                    : ''} text-white w-80"
+                  >Badan Pusat Statistik Kal-Sel</span
+                >
+              </label>
+            </div>
+            <div class="form-control">
+              <label class="label cursor-pointer">
+                <input
+                  type="radio"
+                  name="radio-6"
+                  class="radio {form_modal === '2'
+                    ? 'radio-primary'
+                    : ''}"
+                  value="2"
+                  on:change={onChange}
+                  bind:group={form_modal}
+                  checked={form_modal == "2"}
+                />
+                <span
+                  class="label-text btn {form_modal === '2'
+                    ? 'btn-primary'
+                    : ''} text-white w-80"
+                  >Dinas Tanaman Pangan Kal-Sel</span
+                >
+              </label>
+            </div>
+            <div class="form-control">
+              <label class="label cursor-pointer">
+                <input
+                  type="radio"
+                  name="radio-6"
+                  class="radio {form_modal === '3'
+                    ? 'radio-primary'
+                    : ''}"
+                  value="3"
+                  on:change={onChange}
+                  bind:group={form_modal}
+                  checked={form_modal == "3"}
+                />
+                <span
+                  class="label-text btn {form_modal === '3'
+                    ? 'btn-primary'
+                    : ''} text-white w-80">Custom</span
+                >
+              </label>
+            </div>
+
+            {#if form_modal == "3"}
+              <div class="form-control w-full" in:fade out:fade>
+                <label class="label" for="">
+                  <span class="label-text"
+                    >Masukkan Alamat E-Mail Tujuan</span
+                  >
+                </label>
+                <input
+                  type="email"
+                  id="custom_email"
+                  placeholder="jst.padi@gmail.com"
+                  class="input input-bordered w-full text-black"
+                  bind:value={target_mail}
+                  required
+                />
+              </div>
+            {/if}
+          </div>
+          <div class="modal-action">
+            <a href="#"  class="btn">Cancel</a>
+            <button class="btn btn-primary" type="submit">
+              Send</button
+            >
+          </div>
+        </form>
+      </div>
+    </div>
     </div>
   </div>
 </div>

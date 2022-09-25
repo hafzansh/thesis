@@ -35,14 +35,16 @@ export type Model_Type = {
   node: number,
   path: number,
   result: any,
-  error?:string
+  error?:string,
+  drive_id?:string
 }
 export type Model_Result = {
   City: number,
   Year: number,
   Prediction: number,
   'Test Data': number,
-  MAE:number
+  MAE:number,
+  drive_id?:string
 }
 export type Model_Loss = {
   loss: number,

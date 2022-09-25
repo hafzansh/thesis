@@ -183,7 +183,7 @@
       </div>
       <div class="stat place-items-center">
         <div class="stat-title">Epoch</div>
-        <div class="stat-value">{pog.epoch}</div>
+        <div class="stat-value">{chart_data_loss1.length}/{pog.epoch}</div>
       </div>
       <div class="stat place-items-center">
         <div class="stat-title">Mean Absolute Error</div>

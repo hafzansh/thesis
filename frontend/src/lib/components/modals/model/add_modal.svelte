@@ -27,7 +27,7 @@ import { goto } from "$app/navigation";
   async function submitForm() {
     loading = true;
     const response = await post_data(
-      `${baseApi}/model/training/?node=${data.node}&size=${data.size}&rate=${data.rate}&ep=${data.epoch}`,
+      `${baseApi}/model/training/?node=${data.node}&size=${data.size}&rate=${data.rate}&ep=${data.epoch}&limit=${data.limit}&target=${data.target}`,
       $session.user.auth_token,
       ""
     );

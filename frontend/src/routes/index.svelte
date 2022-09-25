@@ -22,8 +22,14 @@
       },
     };
   };
-  onMount(() => {
+  let a:any
+  let ready=false
+  onMount(async () => {
     themeChange(false);
+    a = await get_data(`${baseApi}/model`,$session.user.auth_token).then(a=>a.json())
+    a.sort((a:any,b:any)=> Number(a.mae) - Number(b.mae))    
+    console.log(a[0])
+    ready=true
   });
   export let data_padi;
   export let data_iklim;
@@ -51,7 +57,10 @@
     PointElement,
     CategoryScale
   );
-  import { city } from "../lib/utils/constants";
+  import { baseApi, city } from "../lib/utils/constants";
+import { get_data } from "../lib/shared/api";
+import { session } from "$app/stores";
+import { goto } from "$app/navigation";
   let padi_labels: any;
   let padi_produksi = data_padi.map((c: any) => c.produksi);
   let iklim_labels = data_iklim.map((c: any) => c.tahun);
@@ -228,4 +237,95 @@
         </div>
       
   </div>
+  {#if ready}
+      <div class="stats stats-vertical bg-primary text-primary-content">
+        <div class="stat">
+          <div class="stat-title">Best Model #1</div>
+          
+          <div class="stat-value">MAE {a[0].mae}</div>
+          
+          <div class="stat-actions">
+            <button
+              in:fly={{ y: 200, duration: 500 }}              
+              class="btn btn-accent btn-sm"
+              >LSize : {a[0].size*100 }%</button
+            >
+            <button
+              in:fly={{ y: 200, duration: 1000 }}              
+              class="btn btn-secondary btn-sm"
+              >Nodes : {a[0].node }</button
+            >            
+            <button
+              in:fly={{ y: 200, duration: 1500 }}
+              
+              class="btn btn-neutral btn-sm"
+              
+              ><a href="/model/data/id/{a[0].id}">
+                Details
+              </a>
+              </button
+            >
+          </div>
+        </div>        
+      </div>
+      <div class="stats stats-vertical bg-primary text-primary-content">
+        <div class="stat">
+          <div class="stat-title">Best Model #2</div>
+          
+          <div class="stat-value">MAE {a[1].mae}</div>
+          
+          <div class="stat-actions">
+            <button
+              in:fly={{ y: 200, duration: 500 }}              
+              class="btn btn-accent btn-sm"
+              >LSize : {a[1].size*100 }%</button
+            >
+            <button
+              in:fly={{ y: 200, duration: 1000 }}              
+              class="btn btn-secondary btn-sm"
+              >Nodes : {a[1].node }</button
+            >            
+            <button
+              in:fly={{ y: 200, duration: 1500 }}
+              
+              class="btn btn-neutral btn-sm"
+              ><a href="/model/data/id/{a[0].id}">
+                Details
+              </a>
+              </button
+            >
+          </div>
+        </div>        
+      </div>
+      <div class="stats stats-vertical bg-primary text-primary-content">
+        <div class="stat">
+          <div class="stat-title">Best Model #3</div>
+          
+          <div class="stat-value">MAE {a[2].mae}</div>
+          
+          <div class="stat-actions">
+            <button
+              in:fly={{ y: 200, duration: 500 }}              
+              class="btn btn-accent btn-sm"
+              >LSize : {a[2].size*100 }%</button
+            >
+            <button
+              in:fly={{ y: 200, duration: 1000 }}              
+              class="btn btn-secondary btn-sm"
+              >Nodes : {a[2].node }</button
+            >            
+            <button
+              in:fly={{ y: 200, duration: 1500 }}
+              
+              class="btn btn-neutral btn-sm"
+              ><a href="/model/data/id/{a[0].id}">
+                Details
+              </a>
+              </button
+            >
+          </div>
+        </div>        
+      </div>
+      {/if}
+  
 </div>
