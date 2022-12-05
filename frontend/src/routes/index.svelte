@@ -289,7 +289,7 @@ import { goto } from "$app/navigation";
               in:fly={{ y: 200, duration: 1500 }}
               
               class="btn btn-neutral btn-sm"
-              ><a href="/model/data/id/{a[0].id}">
+              ><a href="/model/data/id/{a[1].id}">
                 Details
               </a>
               </button
@@ -318,7 +318,7 @@ import { goto } from "$app/navigation";
               in:fly={{ y: 200, duration: 1500 }}
               
               class="btn btn-neutral btn-sm"
-              ><a href="/model/data/id/{a[0].id}">
+              ><a href="/model/data/id/{a[2].id}">
                 Details
               </a>
               </button
