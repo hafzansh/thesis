@@ -4,3 +4,4 @@ backend/*.pickle
 backend/token_drive_v3.pickle
 backend/token_gmail_v1.pickle
 jst-padi.zip
+venv/
