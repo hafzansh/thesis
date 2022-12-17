@@ -1,0 +1,1 @@
+import{S as e,i as s,s as n}from"../../../../chunks/index-68022f09.js";import{g as r}from"../../../../chunks/navigation-0e6511d1.js";import"../../../../chunks/singletons-d1fb5791.js";function i(t){return r("/model/prediction"),[]}class p extends e{constructor(o){super(),s(this,o,i,null,n,{})}}export{p as default};

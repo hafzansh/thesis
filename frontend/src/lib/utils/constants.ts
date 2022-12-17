@@ -1,7 +1,7 @@
 import { faCalculator, faComputer, faFile, faFileCsv, faHome, faMicrochip, faServer, faTableColumns, faTableList } from "@fortawesome/free-solid-svg-icons"
 import type { TPNav } from "./schema"
 
-export const baseApi = 'http://localhost:8000/api'
+export const baseApi = 'http://localhost:8081/api'
 // export const baseApi = 'http://192.168.100.114:8000/api'
 export const JSONContentTypeForm = "application/x-www-form-urlencoded"
 export const app_title = "JST Padi"

@@ -1,0 +1,1 @@
+import{S as a,i as o,s as e}from"../../chunks/index-68022f09.js";import{g as n}from"../../chunks/navigation-0e6511d1.js";import"../../chunks/singletons-d1fb5791.js";function r(t){return n("/aktual/padi"),[]}class p extends a{constructor(s){super(),o(this,s,r,null,e,{})}}export{p as default};

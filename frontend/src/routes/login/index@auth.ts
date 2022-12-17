@@ -53,7 +53,7 @@ export const post: RequestHandler = async ({ request }) => {
                 {
                     // send cookie for every page
                     path: '/',
-                    // server side only cookie so you can't use `document.cookie`
+                    // server side only cookie so you can't use `document.cookie`:
                     httpOnly: true,
                     // only requests from same site can send cookies
                     // and serves to protect from CSRF
