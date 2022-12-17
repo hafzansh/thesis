@@ -5,9 +5,9 @@ from google_auth_oauthlib.flow import Flow, InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload, MediaIoBaseDownload
 from google.auth.transport.requests import Request
+import sys
 
-
-def Create_Service(client_secret_file, api_name, api_version, *scopes):
+def Create_Service(client_secret_file, api_name, api_version,port, *scopes):
     print(client_secret_file, api_name, api_version, scopes, sep='-')
     CLIENT_SECRET_FILE = client_secret_file
     API_SERVICE_NAME = api_name
@@ -17,7 +17,7 @@ def Create_Service(client_secret_file, api_name, api_version, *scopes):
 
     cred = None
 
-    pickle_file = f'token_{API_SERVICE_NAME}_{API_VERSION}.pickle'
+    pickle_file = f'google-token/token_{API_SERVICE_NAME}_{API_VERSION}.pickle'
     # print(pickle_file)
 
     if os.path.exists(pickle_file):
@@ -29,7 +29,7 @@ def Create_Service(client_secret_file, api_name, api_version, *scopes):
             cred.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(CLIENT_SECRET_FILE, SCOPES)
-            cred = flow.run_local_server()
+            cred = flow.run_local_server(port=port)
 
         with open(pickle_file, 'wb') as token:
             pickle.dump(cred, token)
@@ -47,7 +47,8 @@ def convert_to_RFC_datetime(year=1900, month=1, day=1, hour=0, minute=0):
     dt = datetime.datetime(year, month, day, hour, minute, 0).isoformat() + 'Z'
     return dt
 
-
-CLIENT = "client_secret.json"
-service1 = Create_Service(CLIENT,'drive','v3',['https://www.googleapis.com/auth/drive'])
-service2 = Create_Service(CLIENT,'gmail','v1',['https://www.googleapis.com/auth/gmail.send'])
+def create_token():
+    CLIENT = "google-token/client_secret.json"
+    Create_Service(CLIENT,'drive','v3',34711,['https://www.googleapis.com/auth/drive'])
+    Create_Service(CLIENT,'gmail','v1',34712,['https://www.googleapis.com/auth/gmail.send'])
+create_token()

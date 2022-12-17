@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 folder_id = os.environ.get("model_folder_id")
 # CLIENT = os.environ.get("CLIENT_SECRET")
-CLIENT = "app/core/client_secret.json"
+CLIENT = "./token/client_secret.json"
 API = 'drive'
 VERSION = 'v3'
 SCOPES = ['https://www.googleapis.com/auth/drive']

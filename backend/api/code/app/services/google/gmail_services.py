@@ -8,7 +8,7 @@ import uuid
 load_dotenv()
 folder_id = os.environ.get("model_folder_id")
 # CLIENT = os.environ.get("CLIENT_SECRET")
-CLIENT = "app/core/client_secret.json"
+CLIENT = "./token/client_secret.json"
 API = 'gmail'
 VERSION = 'v1'
 SCOPES = ['https://www.googleapis.com/auth/gmail.send']
